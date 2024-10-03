@@ -1,0 +1,23 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+
+.container-fluid {
+    padding-top: 0;
+    margin: 0;
+    
+}
+
+.nav-font-color{
+    color: #F5F5DC;
+}
+
+.navbar-bg{
+    background-color: #C0392B;
+    
+}
+
+.nav-btn-margin{
+    margin-right: 10px;
+}
