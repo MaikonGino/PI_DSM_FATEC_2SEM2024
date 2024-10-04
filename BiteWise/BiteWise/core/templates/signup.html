@@ -13,12 +13,12 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-bg">
-            <div class="container-fluid">
-              <img src="{% static 'imgs/Logo.svg' %}" alt="Logo">
+            <div class="container-fluid nav-right-side">
+              <img src="{% static 'imgs/Logo.svg' %}" alt="Logo" class="nav-logo">
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <div class="collapse navbar-collapse " id="navbarSupportedContent" >
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item ">
                     <a class="nav-link nav-font-color" aria-current="page" href="#">Sobre nós</a>
@@ -31,10 +31,42 @@
                   </li>
                 </ul>
                 <a href="#" class="nav-link nav-font-color nav-btn-margin">Iniciar sessão</a>
-                <a class="btn btn-warning " href="#">Começar Gratuitamente</a>
+                <a class="btn nav-btn-font nav-btn" href="#">Começar Gratuitamente</a>
               </div>
             </div>
           </nav>
+
+          <main>
+            <div class="form-container">
+              <img src="{% static 'imgs/Logo2.svg' %}" alt="form-logo" class="form-logo">
+              <div class="title-container">
+              <h1 class="form-title">Cadastro</h1>
+              </div>
+
+              <form action="" class="form-input-container">
+                <div class="form-item-container">
+                  <p class="input-title">Nome</p>
+                  <input type="text" class="input">
+                </div>
+                <div class="form-item-container">
+                  <p class="input-title">E-mail</p>
+                  <input type="text" class="input">
+                </div>
+                <div class="form-item-container">
+                  <p class="input-title">Telefone</p>
+                  <input type="text" class="input">
+                </div>
+                <div class="form-item-container">
+                  <p class="input-title">Senha</p>
+                  <input type="text" class="input">
+                </div>
+                <div class="form-item-container">
+                  <p class="input-title">Confirmar Senha</p>
+                  <input type="text" class="input">
+                </div>
+              </form>
+            </div>
+          </main>
     </header>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
