@@ -30,7 +30,7 @@ body{
 }
 
 .nav-btn:hover {
-    background-color: #F39C12;
+    background-color: #f3ac3a;
 }
 
 .navbar-bg  {
@@ -56,11 +56,13 @@ main {
 .form-container {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin-top: 100px;
     background-color: #FFFFFF;
     border-radius: 20px;
     align-items: center;
-    height: 730px;
+    height: 830px;
     width: 609px;
 }
 
@@ -97,6 +99,32 @@ main {
 
 .form-input-container {
     
+}
+
+.signup-btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #117A65;
+    margin-top: 20px;
+    height: 40px;
+    width: 230px;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 20px;
+    border-radius: 15px;
+    font-family: "Inter";
+}
+
+.signup-btn:hover {
+    background-color: #3f9483;
+    color: #FFFFFF;
 }
 
 .input {
@@ -139,9 +167,9 @@ main {
 .footer-container {
     display: flex;
     flex-direction: row;
-    height: 100px;
+    height: 92px;
     background-color: #000000;
-    margin-top: 100px;
+    margin-top: 120px;
     justify-content: space-between;
     align-items: center;
     border-radius: 10px 10px 0 0;
@@ -152,6 +180,7 @@ main {
     font-family: 'Roboto';
     color: #FFFFFF;
     font-weight: 500;
+    font-size: 15px;
 }
 
 .footer-icons-container {
@@ -163,13 +192,13 @@ main {
 }
 
 .facebook {
-    height: 60px;
+    height: 55px;
 }
 
 .instagram {
-    height: 60px;
+    height: 55px;
 }
 
 .tiktok {
-    height: 60px;
+    height: 55px;
 }
