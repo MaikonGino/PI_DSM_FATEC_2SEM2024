@@ -10,3 +10,9 @@ def login (request):
 
 def home (request):
     return render(request, 'home.html')
+
+def homeSignedin (request):
+    return render (request, 'home_logged.html')
+
+def aboutUs (request):
+    return render (request, 'aboutUs.html')
