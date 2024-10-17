@@ -21,7 +21,7 @@
               <div class="collapse navbar-collapse " id="navbarSupportedContent" >
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item ">
-                    <a class="nav-link nav-font-color" aria-current="page" href="#">Sobre nós</a>
+                    <a class="nav-link nav-font-color" aria-current="page" href="{% url 'about' %}">Sobre nós</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link nav-font-color" href="#">Receitas</a>
@@ -255,7 +255,11 @@
 
     <footer>
       <div class="footer-container">
-        <span class="footer-text">© 2024 BiteWise. Todos os direitos reservados.</span>
+        <div class="footer-text-wrapper">
+          <span class="footer-text">© 2024 BiteWise. Todos os direitos reservados.</span>
+          <span class="footer-text">Tel: (19) 99999-9999 </span>
+          <span class="footer-text">bitewise.contato@email.com</span>
+        </div>
         <div class="footer-icons-container">
           <a href="#"><img src="{% static 'imgs/facebook.svg' %}" alt="faceboo" class="facebook"></a>
           <a href="#"><img src="{% static 'imgs/instagram.svg' %}" alt="instagram" class="instagram"></a>
