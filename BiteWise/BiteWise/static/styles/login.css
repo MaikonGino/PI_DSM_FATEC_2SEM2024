@@ -98,10 +98,6 @@ main {
     margin-top: 10px;
 }
 
-.form-input-container {
-    
-}
-
 .signup-btn-container {
     display: flex;
     flex-direction: column;
@@ -193,15 +189,23 @@ main {
     text-decoration: none;
 }
 
+/* footer */
+
 .footer-container {
     display: flex;
     flex-direction: row;
-    height: 92px;
+    height: 120px;
+    margin-top: 70px;
     background-color: #000000;
-    margin-top: 120px;
     justify-content: space-between;
     align-items: center;
     border-radius: 10px 10px 0 0;
+}
+
+.footer-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    
 }
 
 .footer-text {
@@ -210,6 +214,7 @@ main {
     color: #FFFFFF;
     font-weight: 500;
     font-size: 15px;
+    margin-top: 10px;
 }
 
 .footer-icons-container {
@@ -219,6 +224,8 @@ main {
     margin-right: 60px;
     gap: 130px;
 }
+
+
 
 .facebook {
     height: 55px;

@@ -47,6 +47,32 @@ body{
     gap: 20px;
 }
 
+.dropdown-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #F39C12;
+    border-radius: 5px;
+    width: 230px;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+.dropdown-icons-wrapper {
+    display: flex;
+    gap: 10px;
+}
+
+.profile-btn {
+    font-family: 'Poppins';
+    color: #000000;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+
+
 main {
     display: flex;
     flex-direction: column;
@@ -447,7 +473,7 @@ main {
     width: 100px;
 }
 
-
+/* footer */
 
 .footer-container {
     display: flex;

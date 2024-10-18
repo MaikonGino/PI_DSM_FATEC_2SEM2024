@@ -1,12 +1,20 @@
+/* font imports */
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
-body{
+
+/* html reset */
+
+body {
     padding: 0;
     margin: 0;
-    background-color: #E5E7E9;
+    background-color: #ffffff;
 }
+
+
+/* header */ 
 
 .container-fluid {
     padding-top: 0;
@@ -47,116 +55,98 @@ body{
     gap: 20px;
 }
 
-main {  
-    display: flex;
-    
-    justify-content: center;
+/* main content */
+
+main {
+    padding: 20px;
 }
 
-.form-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 100px;
-    background-color: #FFFFFF;
-    border-radius: 20px;
-    align-items: center;
-    height: 830px;
-    width: 609px;
+/* first section */
+
+.main-title-container {
+    margin-top: 40px;
 }
 
-.divider {
-    border: none;   
-    height: 2px;          
-    background-color: #117A65;
-    margin: 20px 0;
-    width: 100%; 
-    opacity: 100;
-    margin-top: 40px; 
-}
-
-.form-title {
-    font-family: "Poppins";
-    font-size: 24px;
-    font-weight: 600;
-}
-
-.title-container {
-    justify-content: left;
-    align-items: center;
-    height: 40px;
-    width: 400px;
-    display: flex;
-    text-align: left;
-}
-
-.form-logo {
-    height: 100px;
-    width: 100px;
-    margin-top: 10px;
-}
-
-.signup-btn-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.signup-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #117A65;
-    margin-top: 20px;
-    height: 40px;
-    width: 230px;
-    color: #FFFFFF;
-    font-weight: 700;
-    font-size: 20px;
-    border-radius: 15px;
-    font-family: "Inter";
-}
-
-.signup-btn:hover {
-    background-color: #3f9483;
-    color: #FFFFFF;
-}
-
-.input {
-    height: 40px;
-    width: 400px;
-    border: 1px solid #B2B8C4;
-    border-radius: 10px;
-    padding: 10px;
-}
-
-.input-title {
-    margin-bottom: 5px;
-    font-family: "Poppins";
-}
-
-.form-item-container {
-    margin: 10px;
-}
-
-.login-container {
-    margin-top: 15px;
-}
-
-.login-text {
+.main-title {
     color: #000000;
     font-family: 'Poppins';
-    font-size: 16px;
+    font-weight: 600;
+    font-size: 50px;
+}
+
+.first-part {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    gap: 10px;
+}
+
+.first-part img {
+    height: 630px;
+    width: 850px;
+}
+
+.first-part p {
+    width: 450px;
+    height: 400px;
+    text-align: left;
+    font-family: 'Poppins';
+    font-size: 20px;
+    line-height: 1.5em;
+    
+}
+
+/* second section */
+
+.second-part {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+    gap: 10px;
+}
+
+.second-part img {
+    height: 600px;
+    width: 850px;
+}
+
+.second-part p {
+    width: 450px;
+    height: 400px;
+    text-align: left;
+    font-family: 'Poppins';
+    font-size: 20px;
+    line-height: 1.5em;
+}
+
+/* compromises section */
+
+.compromises-title-container {
+    margin-top: 90px;
+}
+
+.compromises-title-container h4 {
+    color: #000000;
+    font-family: 'Poppins';
     font-weight: 600;
 }
 
-.login-link {
-    color: #A04000;
-    font-family: 'Poppins';
-    font-size: 16px;
-    font-weight: 600;
-    text-decoration: none;
+.compromises {
+    display: flex;
+    flex-direction: row;
+    gap: 200px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 70px;
+    
+}
+
+.compromises img {
+    height: 150px;
 }
 
 /* footer */
@@ -165,7 +155,7 @@ main {
     display: flex;
     flex-direction: row;
     height: 120px;
-    margin-top: 70px;
+    margin-top: 50px;
     background-color: #000000;
     justify-content: space-between;
     align-items: center;
@@ -194,6 +184,8 @@ main {
     margin-right: 60px;
     gap: 130px;
 }
+
+
 
 .facebook {
     height: 55px;
