@@ -24,10 +24,7 @@
                     <a class="nav-link nav-font-color" aria-current="page" href="{% url 'about' %}">Sobre nós</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link nav-font-color" href="#">Receitas</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link nav-font-color" href="#">Contato</a>
+                    <a class="nav-link nav-font-color" href="{% url 'contato' %}">Contato</a>
                   </li>
                 </ul>
                 <a href="{% url 'login' %}" class="nav-link nav-font-color nav-btn-margin">Iniciar sessão</a>
@@ -213,32 +210,32 @@
         <div class="ingredients-options-container">
           <a href="#"><img src="{% static 'imgs/BiteWise-option.svg' %}" alt=""></a>
           <div class="option">
-            <a href="#"><img src="{% static 'imgs/chicken-option.svg' %}" alt=""></a>
-            <a href="#" class="option-name">frango</a>
+            <a href="{% url 'detalhes_ingrediente' 'Frango' %}"><img src="{% static 'imgs/chicken-option.svg' %}" alt=""></a>
+            <a href="{% url 'detalhes_ingrediente' 'Frango' %}" class="option-name">frango</a>
           </div>
           <div class="option">
-            <a href="#"><img src="{% static 'imgs/eggplant-option.svg' %}" alt=""></a>
-            <a href="#" class="option-name">Berinjela</a>
+            <a href="{% url 'detalhes_ingrediente' 'Beringela' %}"><img src="{% static 'imgs/eggplant-option.svg' %}" alt=""></a>
+            <a href="{% url 'detalhes_ingrediente' 'Beringela' %}" class="option-name">Berinjela</a>
           </div>
           <div class="option">
-            <a href="#"><img src="{% static 'imgs/shimeji-option.svg' %}" alt=""></a>
-            <a href="#" class="option-name">Shimeji</a>
+            <a href="{% url 'detalhes_ingrediente' 'Shimeji' %}"><img src="{% static 'imgs/shimeji-option.svg' %}" alt=""></a>
+            <a href="{% url 'detalhes_ingrediente' 'Shimeji' %}" class="option-name">Shimeji</a>
           </div>
           <div class="option">
-            <a href="#"><img src="{% static 'imgs/salmon-option.svg' %}" alt=""></a>
-            <a href="#" class="option-name">Salmão</a>
+            <a href="{% url 'detalhes_ingrediente' 'Salmao' %}"><img src="{% static 'imgs/salmon-option.svg' %}" alt=""></a>
+            <a href="{% url 'detalhes_ingrediente' 'Salmao' %}" class="option-name">Salmão</a>
           </div>
           <div class="option margin-top">
-            <a href="#"><img src="{% static 'imgs/mincedMeat-option.svg' %}" alt=""></a>
-            <a href="#" class="option-name ">Carne Moida</a>
+            <a href="{% url 'detalhes_ingrediente' 'Carne Moida' %}"><img src="{% static 'imgs/mincedMeat-option.svg' %}" alt=""></a>
+            <a href="{% url 'detalhes_ingrediente' 'Carne Moida' %}" class="option-name ">Carne Moida</a>
           </div>
           <div class="option">
-            <a href="#"><img src="{% static 'imgs/pumpkin-option.svg' %}" alt=""></a>
-            <a href="#" class="option-name">abóbora</a>
+            <a href="{% url 'detalhes_ingrediente' 'Abobora' %}"><img src="{% static 'imgs/pumpkin-option.svg' %}" alt=""></a>
+            <a href="{% url 'detalhes_ingrediente' 'Abobora' %}" class="option-name">abóbora</a>
           </div>
           <div class="option">
-            <a href="#"><img src="{% static 'imgs/sweetPotato-option.svg' %}" alt=""></a>
-            <a href="#" class="option-name">Batata Doce</a>
+            <a href="{% url 'detalhes_ingrediente' 'Batata Doce' %}"><img src="{% static 'imgs/sweetPotato-option.svg' %}" alt=""></a>
+            <a href="{% url 'detalhes_ingrediente' 'Batata Doce' %}" class="option-name">Batata Doce</a>
           </div>
           <div class="option margin-top">
             <a href="#"><img src="{% static 'imgs/more-options.svg' %}" alt=""></a>
