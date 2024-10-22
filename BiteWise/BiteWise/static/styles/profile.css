@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+body{
+    padding: 0;
+    margin: 0;
+    background-color: #ffffff;
+}
+
+.container-fluid {
+    padding-top: 0;
+    margin: 0;
+
+}
+
+.nav-font-color {
+    color: #F5F5DC;
+    font-family: "Poppins";
+}
+
+.nav-btn-font {
+    color: #000000;
+    font-family: "Poppins";
+    font-weight: 600;
+}
+
+.nav-btn { 
+    background-color: #F39C12;
+}
+
+.nav-btn:hover {
+    background-color: #f3ac3a;
+}
+
+.navbar-bg  {
+    background-color: #C0392B;
+    
+}
+
+.nav-btn-margin {
+    margin-right: 10px;
+}
+
+.nav-right-side {
+    margin-left: 20px;
+    gap: 20px;
+}
+
+.dropdown-container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #F39C12;
+    border-radius: 15px;
+    width: 150px;
+    height: 50px;
+    margin-left: auto;
+}
+
+
+.dropdown-icons-wrapper {
+    display: flex;
+    gap: 10px;
+    margin-right: 5px;
+}
+
+
+.profile-btn {
+    font-family: 'Poppins';
+    color: #000000;
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 8px;
+}
+
+
+
+.dashboard-layout {
+    display: grid;
+    grid-template-columns: 250px 2fr;
+    height: 100vh;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: left;
+    padding: 20px;
+    height: 100vh;
+    background-color: #66CDAA;
+}
+
+.sidebar a{
+    font-family: 'Poppins';
+    text-decoration: none;
+    color: #000000;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.user-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    background-color: #B1B4B5;
+    height: 300px;
+    width: 600px;
+    font-family: 'Inter';
+}
+
+.card-header {
+    display: flex;
+    flex-direction: row;
+}
+
+.name-pfp-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.user-pfp {
+    height: 70px;
+    width: 70px;
+}
+
+.bitewise-logo {
+    height: 50px;
+    width: 50px;
+}
+
+.user-information {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: row;
+    height: 120px;
+    background-color: #000000;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px 10px 0 0;
+}
+
+.footer-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.footer-text {
+    margin-left: 20px;
+    font-family: 'Roboto';
+    color: #FFFFFF;
+    font-weight: 500;
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+.footer-icons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 60px;
+    gap: 130px;
+}
+
+
+
+.facebook {
+    height: 55px;
+}
+
+.instagram {
+    height: 55px;
+}
+
+.tiktok {
+    height: 55px;
+}

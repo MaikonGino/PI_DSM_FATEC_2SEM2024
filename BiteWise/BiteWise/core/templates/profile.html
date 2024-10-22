@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil</title>
+    <!--Bootstrap5 CSS-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <!--Local CSS-->
+    <link rel="stylesheet" href="{% static 'styles/profile.css' %}">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-bg ">
+            <div class="container-fluid nav-right-side space-between">
+                <a href="{% url 'home' %}"><img src="{% static 'imgs/Logo.svg' %}" alt="Logo" class="nav-logo"></a>
+                <div class="collapse navbar-collapse ms-auto" id="navbarSupportedContent">
+                    <div class="dropdown-container" id="dropdown-container">
+                        <a href="{% url 'perfil' %}" class="profile-btn">Usuário</a>
+                        <div class="dropdown-icons-wrapper">
+                            <img src="{% static 'imgs/user-empty-pfp.svg' %}" alt="profile picture" class="profile-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </nav>
+    </header>
+
+    <div class="dashboard-layout">
+        <!-- Barra lateral -->
+        <nav class="sidebar">
+            <ul>
+                <li><a href=""><img src="{% static 'imgs/black-meter-vector.svg' %}" alt="">Perfil</a></li>
+                <li><a href=""><img src="{% static 'imgs/lupe-vector.svg' %}" alt="">Receitas</a></li>
+                <li><a href=""><img src="{% static 'imgs/calendar-vector.svg' %}" alt="">Assinatura</a></li>
+                <li><a href=""><img src="{% static 'imgs/logout-vector.svg' %}" alt="">Sair</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <h1>Seu Perfil</h1>
+            <div class="user-card">
+                <div class="card-header">
+                    <div class="name-pfp-wrapper">
+                        <img src="{% static 'imgs/user-empty-pfp.svg' %}" alt="" class="user-pfp"> 
+                        <label for="">User Full Name</label>
+                    </div>
+                    <img src="{% static 'imgs/Logo2.svg' %}" alt="" class="bitewise-logo">
+                </div>
+
+                <div class="user-information">
+                    <label>Nome: <span>User Full Name</span></label>
+                    <label for="">E-mail: <span>user@gmail.com</span></label>
+                    <label for="">Celular: <span>(campo que pode adicionar)</span></label>
+                </div>
+            </div>
+        </main>
+    </div>
+
+
+    <footer>
+        <div class="footer-container">
+          <div class="footer-text-wrapper">
+            <span class="footer-text">© 2024 BiteWise. Todos os direitos reservados.</span>
+            <span class="footer-text">Tel: (19) 99999-9999 </span>
+            <span class="footer-text">bitewise.contato@email.com</span>
+          </div>
+          <div class="footer-icons-container">
+            <a href="#"><img src="{% static 'imgs/facebook.svg' %}" alt="faceboo" class="facebook"></a>
+            <a href="#"><img src="{% static 'imgs/instagram.svg' %}" alt="instagram" class="instagram"></a>
+            <a href="#"><img src="{% static 'imgs/TikTok.svg' %}" alt="tiktok" class="tiktok"></a>
+          </div>
+        </div>
+      </footer>
+</body>
+</html>

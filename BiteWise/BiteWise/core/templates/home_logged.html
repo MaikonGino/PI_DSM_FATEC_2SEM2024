@@ -31,14 +31,14 @@
                   </li>
                 </ul>
                 <div class="dropdown-container" id="dropdown-container">
-                  <a href="#" class="profile-btn">Meu Perfil</a>
+                  <a href="{% url 'perfil' %}" class="profile-btn">Meu Perfil</a>
                   <div class="dropdown-icons-wrapper">
                     <img src="{% static 'imgs/user-empty-pfp.svg' %}" alt="profile picture" class="profile-img">
                     <img src="{% static 'imgs/down-arrow.svg' %}" alt="down arrow" class="arrow-img" id="dropdown-toggle">
                   </div>
                   <div class="dropdown-content" id="dropdown-content">
                     <div class="dropdown-content-header">
-                      <a href="#">Meu perfil</a>
+                      <a href="{% url 'perfil' %}">Meu perfil</a>
                       <a href="#">Minhas receitas</a>
                       <a href="#">Assinatura</a>
                     </div>
