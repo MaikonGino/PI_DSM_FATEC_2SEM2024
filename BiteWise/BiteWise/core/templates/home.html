@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
     <!--Local CSS-->
     <link rel="stylesheet" href="{% static 'styles/home.css' %}">
+    
 </head>
 <body>
     <header>
@@ -93,9 +94,9 @@
 
       <section class="plan-section-wrapper">
         <div class="time-btn-container">
-          <button class="plan-time-btn active-time-btn">Mensal</button>
-          <button class="plan-time-btn">Anual</button>
-          <button class="plan-time-btn">Vitalício</button>
+          <button class="plan-time-btn active-time-btn" data-plan="mensal">Mensal</button>
+          <button class="plan-time-btn" data-plan="anual">Anual</button>
+          <button class="plan-time-btn" data-plan="vitalicio">Vitalício</button>
         </div>
         
         <div class="plan-cards-container">
@@ -103,7 +104,7 @@
             <div class="card-text-container">
               <h3>Grátis</h3>
               <p>Experimente antes de comprar.</p>
-              <h4>R$ <span>0,00</span> /mês</h4>
+              <h4>R$ <span class="price" data-plan="gratis">0,00</span> <span class="tempo">/mês</span></h4>
 
               <ul class="perk_list">
               <li class="perk">Armazenar 20 receitas</li>
@@ -123,7 +124,7 @@
             <div class="card-text-container">
               <h3>Plus</h3>
               <p>Organize todas as suas receitas.</p>
-              <h4>R$ <span>0,00</span> /mês</h4>
+              <h4>R$ <span class="price" data-plan="plus">5,99</span> <span class="tempo">/mês</span></h4>
 
               <ul class="perk_list">
                 <li class="perk">Receitas ilimitadas</li>
@@ -143,7 +144,7 @@
             <div class="card-text-container">
               <h3>Pro</h3>
               <p>Incríveis funcionalidades de IA.</p>
-              <h4>R$ <span>0,00</span> /mês</h4>
+              <h4>R$ <span class="price" data-plan="pro">9,99</span> <span class="tempo">/mês</span></h4>
 
               <ul class="perk_list">
                 <li class="perk">Receitas ilimitadas</li>
@@ -264,5 +265,7 @@
         </div>
       </div>
     </footer>
+
+    <script src="{% static 'js/prices.js' %}"></script>
 </body>
 </html>
