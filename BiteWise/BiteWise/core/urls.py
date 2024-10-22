@@ -11,5 +11,5 @@ urlpatterns = [
     path('contato', views.contact, name='contato'),
     path('ingredientes/', views.listar_ingredientes, name='listar_ingredientes'),
     path('ingrediente/<str:nome>/', views.detalhes_ingrediente, name='detalhes_ingrediente'),
-    
+    path('Perfil', views.profile, name='perfil')
 ]

@@ -21,6 +21,9 @@ def aboutUs (request):
 def contact (request):
     return render (request, 'contact.html')
 
+def profile (request):
+    return render (request, 'profile.html')
+
 def listar_ingredientes (request):
     ingredientes = Ingrediente.objects.all()
     return render(request, 'listar_ingredientes.html', {'ingredientes': ingredientes})
