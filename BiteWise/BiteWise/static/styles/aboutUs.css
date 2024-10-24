@@ -22,6 +22,12 @@ body {
     
 }
 
+.nav-link:hover {
+    color: #f3ac3a;
+    font-weight: 600;
+}
+
+
 .nav-font-color {
     color: #F5F5DC;
     font-family: "Poppins";
@@ -41,6 +47,11 @@ body {
     background-color: #f3ac3a;
 }
 
+
+.nav-btn:hover:active {
+    background-color: #66CDAA;
+}
+
 .navbar-bg  {
     background-color: #C0392B;
     
@@ -54,6 +65,77 @@ body {
     margin-left: 20px;
     gap: 20px;
 }
+
+.dropdown-container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #F39C12;
+    border-radius: 5px;
+    width: 230px;
+    height: 50px;
+    
+}
+
+
+.dropdown-icons-wrapper {
+    display: flex;
+    gap: 10px;
+    margin-right: 5px;
+}
+
+.arrow-img {
+    z-index: 3;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #F39C12;
+    width: 190px;
+    height: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    margin-top: 150px;
+    transition: opacity 0.3s ease;
+    border-radius: 0 0 5px 5px;
+}
+
+.dropdown-content-header {
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+    gap: 5px;
+}
+
+.dropdown-content-footer {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+}
+
+.dropdown-content a {
+    color: #000000;
+    text-decoration: none;
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 16px;
+    width: 130px;
+}
+
+.dropdown-content hr {
+    width: 190px;
+}
+
+.profile-btn {
+    font-family: 'Poppins';
+    color: #000000;
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 8px;
+}   
 
 /* main content */
 

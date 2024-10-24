@@ -14,6 +14,12 @@ body{
     
 }
 
+.nav-link:hover {
+    color: #f3ac3a;
+    font-weight: 600;
+}
+
+
 .nav-font-color {
     color: #F5F5DC;
     font-family: "Poppins";
@@ -31,6 +37,10 @@ body{
 
 .nav-btn:hover {
     background-color: #f3ac3a;
+}
+
+.nav-btn:hover:active {
+    background-color: #66CDAA;
 }
 
 .navbar-bg  {
@@ -120,6 +130,11 @@ main {
 
 .signup-btn:hover {
     background-color: #3f9483;
+    color: #FFFFFF;
+}
+
+.signup-btn:hover:active {
+    background-color: #A04000;
     color: #FFFFFF;
 }
 

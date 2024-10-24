@@ -12,28 +12,55 @@
     
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-bg">
-            <div class="container-fluid nav-right-side">
-              <a href="{% url 'home' %}"><img src="{% static 'imgs/Logo.svg' %}" alt="Logo" class="nav-logo"></a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse " id="navbarSupportedContent" >
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item ">
-                    <a class="nav-link nav-font-color" aria-current="page" href="{% url 'about' %}">Sobre nós</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link nav-font-color" href="{% url 'contato' %}">Contato</a>
-                  </li>
-                </ul>
-                <a href="{% url 'login' %}" class="nav-link nav-font-color nav-btn-margin">Iniciar sessão</a>
-                <a class="btn nav-btn-font nav-btn" href="{% url 'signup' %}">Começar Gratuitamente</a>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-bg">
+        <div class="container-fluid nav-right-side">
+          <a href="{% url 'home' %}"><img src="{% static 'imgs/Logo.svg' %}" alt="Logo" class="nav-logo"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse " id="navbarSupportedContent" >
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item ">
+                <a class="nav-link nav-font-color" aria-current="page" href="{% url 'about' %}">Sobre nós</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link nav-font-color" href="{% url 'contato' %}">Contato</a>
+              </li>
+            </ul>
+
+            {% if user.is_authenticated %}
+            <!-- Menu para usuários logados com dropdown de perfil -->
+            <div class="dropdown-container" id="dropdown-container">
+              <a href="{% url 'perfil' %}" class="profile-btn">Meu Perfil</a>
+              <div class="dropdown-icons-wrapper">
+                <img src="{% static 'imgs/user-empty-pfp.svg' %}" alt="profile picture" class="profile-img">
+                <img src="{% static 'imgs/down-arrow.svg' %}" alt="down arrow" class="arrow-img" id="dropdown-toggle">
+              </div>
+              <div class="dropdown-content" id="dropdown-content">
+                <div class="dropdown-content-header">
+                  <a href="{% url 'perfil' %}">Meu perfil</a>
+                  <a href="#">Minhas receitas</a>
+                  <a href="{% url 'perfil' %}">Assinatura</a>
+                </div>
+                <hr>
+                <div class="dropdown-content-footer">
+                  <form id="logout-form" action="{% url 'logout' %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="dropdown-item">Sair</button>
+                  </form>
+                </div>
               </div>
             </div>
-          </nav>
-    </header>
+            {% else %}
+            <!-- Menu para usuários deslogados -->
+            <a href="{% url 'login' %}" class="nav-link nav-font-color nav-btn-margin">Iniciar sessão</a>
+            <a class="btn nav-btn-font nav-btn" href="{% url 'signup' %}">Começar Gratuitamente</a>
+            {% endif %}
+          </div>
+        </div>
+      </nav>
+</header>
 
     <main>
       <div class="search-container">
@@ -166,7 +193,7 @@
       </section>
 
       <div class="about-banner-container">
-        <a href=""><img src="{% static 'imgs/Aboutus-Banner.svg' %}" alt=""></a>
+        <a href="{% url 'about' %}"><img src="{% static 'imgs/Aboutus-Banner.svg' %}" alt=""></a>
       </div>
 
       <div class="highlights-title-container">
@@ -266,6 +293,7 @@
       </div>
     </footer>
 
+    <script src="{% static 'js/dropdown.js' %}"></script>
     <script src="{% static 'js/prices.js' %}"></script>
 </body>
 </html>

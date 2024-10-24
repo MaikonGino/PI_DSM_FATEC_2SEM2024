@@ -130,3 +130,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+LOGOUT_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'home'
+
+AUTHENTICATION_BACKENDS = [
+    'core.backends.custom_auth.TestLoginBackend',  # Substitua 'seu_app' pelo nome do seu app
+    'django.contrib.auth.backends.ModelBackend',  # Mantém o backend padrão
+]
