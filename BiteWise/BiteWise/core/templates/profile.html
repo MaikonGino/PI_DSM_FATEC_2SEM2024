@@ -31,31 +31,73 @@
         <!-- Barra lateral -->
         <nav class="sidebar">
             <ul>
-                <li><a href=""><img src="{% static 'imgs/black-meter-vector.svg' %}" alt="">Perfil</a></li>
-                <li><a href=""><img src="{% static 'imgs/lupe-vector.svg' %}" alt="">Receitas</a></li>
-                <li><a href=""><img src="{% static 'imgs/calendar-vector.svg' %}" alt="">Assinatura</a></li>
-                <li><a href=""><img src="{% static 'imgs/logout-vector.svg' %}" alt="">Sair</a></li>
+                <li><a href="?section=perfil" class="sidebar-link" data-target="profile-content"><img src="{% static 'imgs/black-meter-vector.svg' %}" alt="">Perfil</a></li>
+                <li><a href="?section=receitas" class="sidebar-link" data-target="recipes-content"><img src="{% static 'imgs/lupe-vector.svg' %}" alt="">Receitas</a></li>
+                <li><a href="?section=assinatura" class="sidebar-link" data-target="subscription-content"><img src="{% static 'imgs/calendar-vector.svg' %}" alt="">Assinatura</a></li>
+                
+                <li>
+                    <form id="logout-form" action="{% url 'logout' %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="dropdown-item"><img src="{% static 'imgs/logout-vector.svg' %}" alt="">Sair</button>
+                      </form>
+                </li>
             </ul>
         </nav>
 
         <main class="main-content">
-            <h1>Seu Perfil</h1>
-            <div class="user-card">
-                <div class="card-header">
-                    <div class="name-pfp-wrapper">
-                        <img src="{% static 'imgs/user-empty-pfp.svg' %}" alt="" class="user-pfp"> 
-                        <label for="">User Full Name</label>
+
+            <section id="profile-content" class="content-section">
+                <div class="profile-title-container">
+                    <h2 class="section-title">Seu Perfil</h1>
+                </div>
+                <div class="user-card">
+                    <div class="card-header">
+                        <div class="name-pfp-wrapper">
+                            <img src="{% static 'imgs/user-empty-pfp.svg' %}" alt="" class="user-pfp"> 
+                            <label for="" class="user-name">User Full Name</label>
+                        </div>
+                        <img src="{% static 'imgs/Logo2.svg' %}" alt="" class="bitewise-logo">
                     </div>
-                    <img src="{% static 'imgs/Logo2.svg' %}" alt="" class="bitewise-logo">
+
+                    <div class="user-information">
+                        <label class="data-title">Nome: <span class="user-data">User Full Name</span></label>
+                        <label for="" class="data-title">E-mail: <span class="user-data">user@gmail.com</span></label>
+                        <label for="" class="data-title">Celular: <span class="user-data">(campo que pode adicionar)</span></label>
+                    </div>
+                </div>
+            </section>
+
+            <section id="recipes-content" class="content-section" style="display: none;">
+                <h2>Suas receitas</h2>
+            </section>
+
+            <section id="subscription-content" class="content-section" style="display: none;">
+                <div class="plan-title-container">
+                    <h2 class="plan-section-title">Assinatura</h2>
                 </div>
 
-                <div class="user-information">
-                    <label>Nome: <span>User Full Name</span></label>
-                    <label for="">E-mail: <span>user@gmail.com</span></label>
-                    <label for="">Celular: <span>(campo que pode adicionar)</span></label>
+                <div class="plan-card">
+                    <div class="plan-type-container">
+                        <label for="">Seu plano atual:</label>
+                        <span>Gratuito</span>
+                    </div>
+
+                    <div class="recipe-quantity-container">
+                        <label for="">Receitas disponíveis hoje:</label>
+                        <span>0</span>
+                    </div>
+                    
+                    
+                    <div class="plan-btn-container">
+                        <a href="" class="monthly-plan-btn">Assinar Plano Mensal</a>
+                        <a href="" class="yearly-plan-btn">Assinar Plano Anual</a>
+                    </div>
+                    <img src="{% static 'imgs/Logo2.svg' %}" alt="" class="bitewise-logo2">
                 </div>
-            </div>
+            </section>
         </main>
+
+        
     </div>
 
 
@@ -73,5 +115,7 @@
           </div>
         </div>
       </footer>
+
+      <script src="{% static 'js/sidebar.js' %}"></script>
 </body>
 </html>
