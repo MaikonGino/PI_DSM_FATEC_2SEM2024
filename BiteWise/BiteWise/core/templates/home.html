@@ -9,30 +9,58 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
     <!--Local CSS-->
     <link rel="stylesheet" href="{% static 'styles/home.css' %}">
+    
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-bg">
-            <div class="container-fluid nav-right-side">
-              <a href="{% url 'home' %}"><img src="{% static 'imgs/Logo.svg' %}" alt="Logo" class="nav-logo"></a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse " id="navbarSupportedContent" >
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item ">
-                    <a class="nav-link nav-font-color" aria-current="page" href="{% url 'about' %}">Sobre nós</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link nav-font-color" href="{% url 'contato' %}">Contato</a>
-                  </li>
-                </ul>
-                <a href="{% url 'login' %}" class="nav-link nav-font-color nav-btn-margin">Iniciar sessão</a>
-                <a class="btn nav-btn-font nav-btn" href="{% url 'signup' %}">Começar Gratuitamente</a>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-bg">
+        <div class="container-fluid nav-right-side">
+          <a href="{% url 'home' %}"><img src="{% static 'imgs/Logo.svg' %}" alt="Logo" class="nav-logo"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse " id="navbarSupportedContent" >
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item ">
+                <a class="nav-link nav-font-color" aria-current="page" href="{% url 'about' %}">Sobre nós</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link nav-font-color" href="{% url 'contato' %}">Contato</a>
+              </li>
+            </ul>
+
+            {% if user.is_authenticated %}
+            <!-- Menu para usuários logados com dropdown de perfil -->
+            <div class="dropdown-container" id="dropdown-container">
+              <a href="{% url 'perfil' %}" class="profile-btn">Meu Perfil</a>
+              <div class="dropdown-icons-wrapper">
+                <img src="{% static 'imgs/user-empty-pfp.svg' %}" alt="profile picture" class="profile-img">
+                <img src="{% static 'imgs/down-arrow.svg' %}" alt="down arrow" class="arrow-img" id="dropdown-toggle">
+              </div>
+              <div class="dropdown-content" id="dropdown-content">
+                <div class="dropdown-content-header">
+                  <a href="{% url 'perfil' %}">Meu perfil</a>
+                  <a href="#">Minhas receitas</a>
+                  <a href="{% url 'perfil' %}">Assinatura</a>
+                </div>
+                <hr>
+                <div class="dropdown-content-footer">
+                  <form id="logout-form" action="{% url 'logout' %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="dropdown-item">Sair</button>
+                  </form>
+                </div>
               </div>
             </div>
-          </nav>
-    </header>
+            {% else %}
+            <!-- Menu para usuários deslogados -->
+            <a href="{% url 'login' %}" class="nav-link nav-font-color nav-btn-margin">Iniciar sessão</a>
+            <a class="btn nav-btn-font nav-btn" href="{% url 'signup' %}">Começar Gratuitamente</a>
+            {% endif %}
+          </div>
+        </div>
+      </nav>
+</header>
 
     <main>
       <div class="search-container">
@@ -93,9 +121,9 @@
 
       <section class="plan-section-wrapper">
         <div class="time-btn-container">
-          <button class="plan-time-btn active-time-btn">Mensal</button>
-          <button class="plan-time-btn">Anual</button>
-          <button class="plan-time-btn">Vitalício</button>
+          <button class="plan-time-btn active-time-btn" data-plan="mensal">Mensal</button>
+          <button class="plan-time-btn" data-plan="anual">Anual</button>
+          <button class="plan-time-btn" data-plan="vitalicio">Vitalício</button>
         </div>
         
         <div class="plan-cards-container">
@@ -103,7 +131,7 @@
             <div class="card-text-container">
               <h3>Grátis</h3>
               <p>Experimente antes de comprar.</p>
-              <h4>R$ <span>0,00</span> /mês</h4>
+              <h4>R$ <span class="price" data-plan="gratis">0,00</span> <span class="tempo">/mês</span></h4>
 
               <ul class="perk_list">
               <li class="perk">Armazenar 20 receitas</li>
@@ -123,7 +151,7 @@
             <div class="card-text-container">
               <h3>Plus</h3>
               <p>Organize todas as suas receitas.</p>
-              <h4>R$ <span>0,00</span> /mês</h4>
+              <h4>R$ <span class="price" data-plan="plus">5,99</span> <span class="tempo">/mês</span></h4>
 
               <ul class="perk_list">
                 <li class="perk">Receitas ilimitadas</li>
@@ -143,7 +171,7 @@
             <div class="card-text-container">
               <h3>Pro</h3>
               <p>Incríveis funcionalidades de IA.</p>
-              <h4>R$ <span>0,00</span> /mês</h4>
+              <h4>R$ <span class="price" data-plan="pro">9,99</span> <span class="tempo">/mês</span></h4>
 
               <ul class="perk_list">
                 <li class="perk">Receitas ilimitadas</li>
@@ -165,7 +193,7 @@
       </section>
 
       <div class="about-banner-container">
-        <a href=""><img src="{% static 'imgs/Aboutus-Banner.svg' %}" alt=""></a>
+        <a href="{% url 'about' %}"><img src="{% static 'imgs/Aboutus-Banner.svg' %}" alt=""></a>
       </div>
 
       <div class="highlights-title-container">
@@ -264,5 +292,8 @@
         </div>
       </div>
     </footer>
+
+    <script src="{% static 'js/dropdown.js' %}"></script>
+    <script src="{% static 'js/prices.js' %}"></script>
 </body>
 </html>

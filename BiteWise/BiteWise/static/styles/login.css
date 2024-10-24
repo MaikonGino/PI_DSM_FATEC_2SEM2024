@@ -26,12 +26,23 @@ body{
     font-weight: 600;
 }
 
+.nav-link:hover {
+    color: #f3ac3a;
+    font-weight: 600;
+}
+
+
 .nav-btn { 
     background-color: #F39C12;
 }
 
 .nav-btn:hover {
     background-color: #f3ac3a;
+}
+
+
+.nav-btn:hover:active {
+    background-color: #66CDAA;
 }
 
 .navbar-bg  {
@@ -142,8 +153,18 @@ main {
     color: #FFFFFF;
 }
 
+.login-btn:hover:active {
+    background-color: #C0392B;
+    color: #FFFFFF;
+}
+
 .signup-btn:hover {
     background-color: #117A65;
+    color: #FFFFFF;
+}
+
+.signup-btn:hover:active {
+    background-color: #A04000;
     color: #FFFFFF;
 }
 

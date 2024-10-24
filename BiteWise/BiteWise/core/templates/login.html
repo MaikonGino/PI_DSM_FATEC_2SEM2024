@@ -100,9 +100,6 @@
                     <a class="nav-link nav-font-color" aria-current="page" href="{% url 'about' %}">Sobre nós</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link nav-font-color" href="#">Receitas</a>
-                  </li>
-                  <li class="nav-item">
                     <a class="nav-link nav-font-color" href="#">Contato</a>
                   </li>
                 </ul>
@@ -114,42 +111,40 @@
     </header>
 
     <main>
-        <div class="form-container">
+      <div class="form-container">
           <img src="{% static 'imgs/Logo2.svg' %}" alt="form-logo" class="form-logo">
           <div class="title-container">
-          <h1 class="form-title">Login</h1>
+              <h1 class="form-title">Login</h1>
           </div>
-
-          <form action="" class="form-input-container">
-            <div class="form-item-container">
-              <p class="input-title">Usuário</p>
-              <input type="text" class="input" placeholder="Digite seu e-mail">
-            </div>
-            <div class="form-item-container">
-              <p class="input-title">Senha</p>
-              <input type="text" class="input" placeholder="Digite sua senha">
-            </div>
-            <div class="signup-btn-container">
-            <a class="btn login-btn" href="{% url 'home_logged' %}">Entrar</a>
-            <a class="btn signup-btn" href="{% url 'signup' %}">Cadastre-se</a>
-            </div>
+  
+          <!-- Formulário de login que envia uma requisição POST -->
+          <form method="POST" class="form-input-container">
+              {% csrf_token %}
+              <div class="form-item-container">
+                  <p class="input-title">Usuário</p>
+                  <input type="text" name="username" class="input" placeholder="Digite seu nome de usuário">
+              </div>
+              <div class="form-item-container">
+                  <p class="input-title">Senha</p>
+                  <input type="password" name="password" class="input" placeholder="Digite sua senha">
+              </div>
+              <div class="signup-btn-container">
+                  <button type="submit" class="btn login-btn">Entrar</button>
+                  <a class="btn signup-btn" href="{% url 'signup' %}">Cadastre-se</a>
+              </div>
           </form>
           <hr class="divider"> 
           <div id="gSignInWrapper">
-            
-            <div id="customBtn" class="customGPlusSignIn">
-              <div class="btn-divider">
-                <span class="icon"><img src="{% static 'imgs/Google-Logo.svg' %}" alt="" height="30px" width="30px"></span>
+              <div id="customBtn" class="customGPlusSignIn">
+                  <div class="btn-divider">
+                      <span class="icon"><img src="{% static 'imgs/Google-Logo.svg' %}" alt="" height="30px" width="30px"></span>
+                  </div>
+                  <span class="buttonText">Ou entre com Google.</span>
               </div>
-              <span class="buttonText">Ou entre com Google.</span>
-            </div>
           </div>
-          <div id="name"></div>
-          <script>startApp();</script>
-        </div>
-        
-      </main>   
-
+      </div>
+  </main>
+  
       <footer>
         <div class="footer-container">
           <div class="footer-text-wrapper">
