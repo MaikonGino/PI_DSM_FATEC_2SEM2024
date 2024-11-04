@@ -259,3 +259,82 @@ main {
 .tiktok {
     height: 55px;
 }
+
+
+@media (min-width: 200px) and (max-width: 1200px) {
+
+    .form-container {
+        width: 50%;
+    }
+
+    .title-container {
+        width: 80%
+    }
+
+    .form-input-container {
+        width: 80%;
+    }
+
+    .form-item-container {
+        width: 100%;
+    }
+
+    .input {
+        width: 100%;
+    }
+
+    .footer-icons-container {
+        gap: 10px;
+        margin-right: 0;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        height: 230px;
+    }
+
+    .footer-text-wrapper {
+        align-items: center;
+        justify-content: center;
+    }
+
+    .footer-text {
+        font-size: 18px;
+    }
+
+    .footer-icons-container {
+        gap: 40px;
+        margin-bottom: 20px;
+    }
+
+}
+
+@media (min-width: 500px ) {
+    
+    .form-container {
+        width: 80%;
+    }
+}
+
+@media (max-width: 700px) {
+
+    .form-container {
+        width: 80%;
+    }
+
+    .footer-container {
+        margin-top: 130px;
+        
+    }
+}
+
+@media (min-width: 1000px) {
+    .form-container {
+        width: 50%;
+    }
+
+    .footer-container {
+        display: flex;
+        flex-direction: row;
+    }
+}

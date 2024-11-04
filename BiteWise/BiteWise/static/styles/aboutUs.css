@@ -280,3 +280,18 @@ main {
 .tiktok {
     height: 55px;
 }
+
+
+@media (min-width: 200px) and (max-width: 1200px) {
+
+    .first-part {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .second-part {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+}
