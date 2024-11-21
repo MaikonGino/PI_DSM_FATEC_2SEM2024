@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
+from dotenv import load_dotenv
 from pathlib import Path
 import os
 
@@ -40,6 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
 ]
 
 MIDDLEWARE = [
@@ -50,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'BiteWise.urls'
@@ -65,6 +71,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                
             ],
         },
     },
@@ -135,6 +142,56 @@ LOGOUT_REDIRECT_URL = 'home'
 LOGIN_REDIRECT_URL = 'home'
 
 AUTHENTICATION_BACKENDS = [
-    'core.backends.custom_auth.TestLoginBackend',  # Substitua 'seu_app' pelo nome do seu app
     'django.contrib.auth.backends.ModelBackend',  # Mantém o backend padrão
+    'allauth.account.auth_backends.AuthenticationBackend',
 ]
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'bitewise',
+        'USER': 'root',
+        'PASSWORD': 'admin',
+        'HOST': 'localhost',  # ou o endereço do seu servidor de banco de dados
+        'PORT': '3306',       # Porta padrão do MySQL
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+            'ssl': {'ssl-ca': ''}
+        },
+    }
+}
+
+
+
+LOGIN_REDIRECT_URL = 'home'  # Ajuste conforme necessário
+LOGOUT_REDIRECT_URL = 'home'  # Ajuste conforme necessário
+ACCOUNT_AUTHENTICATION_METHOD = 'email'  # ou 'email'
+ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = True
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_USERNAME_REQUIRED = False  # Desabilita a exigência de 'username'
+SOCIALACCOUNT_AUTO_SIGNUP = True
+
+load_dotenv()
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'APP': {
+            'client_id': os.getenv('GOOGLE_CLIENT_ID'),
+            'secret': os.getenv('GOOGLE_CLIENT_SECRET'),
+            'key': ''
+        },
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        },
+        'OAUTH_PKCE_ENABLED': True,
+    }
+}
+
+AUTH_USER_MODEL = 'core.CustomUser'
+
+ACCOUNT_ADAPTER = 'core.adapters.CustomAccountAdapter'
