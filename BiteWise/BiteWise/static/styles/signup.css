@@ -155,8 +155,43 @@ main {
     margin: 10px;
 }
 
+
 .login-container {
     margin-top: 15px;
+}
+
+.btn-google {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    width: 300px;
+}
+
+.btn-google:hover {
+    border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.google-icon {
+    height: 35px;
+    width: 90px;
+    border-right: solid 1px rgba(0, 0, 0, 0.5);
+}
+
+.google-icon:active {
+    border-right: solid 1px #000000;
+}
+
+.google-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 210px;
+    color: #000000;
+    font-family: 'Poppins';
+    font-weight: 600;
 }
 
 .login-text {

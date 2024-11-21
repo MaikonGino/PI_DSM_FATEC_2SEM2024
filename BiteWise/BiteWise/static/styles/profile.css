@@ -55,7 +55,7 @@ body{
     align-items: center;
     background-color: #F39C12;
     border-radius: 15px;
-    width: 150px;
+    width: auto;
     height: 50px;
     margin-left: auto;
 }
@@ -87,6 +87,8 @@ body{
     text-decoration: none;
     font-weight: 600;
     margin-left: 8px;
+    margin-right: 5px;
+    width: auto;
 }
 
 
@@ -198,6 +200,7 @@ body{
 .user-pfp {
     height: 130px;
     width: 130px;
+    border-radius: 90px;
 }
 
 .user-name {
