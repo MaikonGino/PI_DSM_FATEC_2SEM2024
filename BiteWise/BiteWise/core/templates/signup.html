@@ -1,94 +1,23 @@
 {% load static %}
+{% load socialaccount %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
+    <meta name="google-signin-client_id" content="654396214021-hphjbmldsjkoqq73qj99r86astg1k2n2.apps.googleusercontent.com">
     <title>Cadastro</title>
+    <link rel="shortcut icon" type="imagex/png" href="{% static 'imgs/bitewise_icon.ico' %}">
     <!--Bootstrap5 CSS-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
     <!--Local CSS-->
     <link rel="stylesheet" href="{% static 'styles/signup.css' %}">
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" type="text/css">
-
-    <script src="https://apis.google.com/js/api:client.js"></script>
-  <script>
-  var googleUser = {};
-  var startApp = function() {
-    gapi.load('auth2', function(){
-      // Retrieve the singleton for the GoogleAuth library and set up the client.
-      auth2 = gapi.auth2.init({
-        client_id: 'YOUR_CLIENT_ID.apps.googleusercontent.com',
-        cookiepolicy: 'single_host_origin',
-        // Request scopes in addition to 'profile' and 'email'
-        //scope: 'additional_scope'
-      });
-      attachSignin(document.getElementById('customBtn'));
-    });
-  };
-
-  function attachSignin(element) {
-    console.log(element.id);
-    auth2.attachClickHandler(element, {},
-        function(googleUser) {
-          document.getElementById('name').innerText = "Signed in: " +
-              googleUser.getBasicProfile().getName();
-        }, function(error) {
-          alert(JSON.stringify(error, undefined, 2));
-        });
-  }
-  </script>
-
-<style type="text/css">
-  #customBtn {
-    display: flex;
-    flex-direction: row;
-    background: white;
-    color: #000000;
-    width: 300px;
-    border-radius: 5px;
-    border: thin solid #B2B8C4;
-    align-items: center;
-    justify-content: center;
-    margin-top: 10px;
-  }
-  #customBtn:hover {
-    cursor: pointer;
-  }
-  span.label {
-    font-family: serif;
-    font-weight: normal;
-  }
-  span.icon {
-    background: url('/identity/sign-in/g-normal.png') transparent 5px 50% no-repeat;
-    display: flex;
-    align-items: center;
-    width: 40px;
-    height: 39px;
-  }
-  span.buttonText {
-    display: inline-block;
-    vertical-align: middle;
-    padding-left: 25px;
-    padding-right: 0;
-    font-size: 16px;
-    font-weight: bold;
-    /* Use the Roboto font that is loaded in the <head> */
-    font-family: 'Poppins', sans-serif;
-  }
-  div.btn-divider {
-    display: flex;
-    border-right: 1px solid #B2B8C4;
-    height: 39px;
-    width: 70px;
-    justify-content: center;
-    align-items: center;
-  }
-</style>
     
 </head>
 <body>
+  
   <header>
     <nav class="navbar navbar-expand-lg navbar-bg">
         <div class="container-fluid nav-right-side">
@@ -132,7 +61,7 @@
             {% else %}
             <!-- Menu para usuários deslogados -->
             <a href="{% url 'login' %}" class="nav-link nav-font-color nav-btn-margin">Iniciar sessão</a>
-            <a class="btn nav-btn-font nav-btn" href="{% url 'signup' %}">Começar Gratuitamente</a>
+            <a class="btn nav-btn-font nav-btn" href="{% url 'register' %}">Começar Gratuitamente</a>
             {% endif %}
           </div>
         </div>
@@ -145,44 +74,53 @@
               <h1 class="form-title">Cadastro</h1>
               </div>
 
-              <form action="" class="form-input-container">
-                <div class="form-item-container">
-                  <p class="input-title">Nome</p>
-                  <input type="text" class="input">
-                </div>
-                <div class="form-item-container">
-                  <p class="input-title">E-mail</p>
-                  <input type="text" class="input">
-                </div>
-                <div class="form-item-container">
-                  <p class="input-title">Telefone</p>
-                  <input type="text" class="input">
-                </div>
-                <div class="form-item-container">
-                  <p class="input-title">Senha</p>
-                  <input type="text" class="input">
-                </div>
-                <div class="form-item-container">
-                  <p class="input-title">Confirmar Senha</p>
-                  <input type="text" class="input">
-                </div>
-                <div class="signup-btn-container">
-                <button class="btn signup-btn">Criar conta</button>
-                </div>
-              </form>
-              <hr class="divider"> 
-              <div id="gSignInWrapper">
+              <form action="{% url 'register' %}" method="post" class="form-input-container">
+                {% csrf_token %}
                 
-                <div id="customBtn" class="customGPlusSignIn">
-                  <div class="btn-divider">
-                    <span class="icon"><img src="{% static 'imgs/Google-Logo.svg' %}" alt="" height="30px" width="30px"></span>
-                  </div>
-                  <span class="buttonText">Ou entre com Google.</span>
+                <!-- Nome -->
+                <div class="form-item-container">
+                    <p class="input-title">Nome</p>
+                    {{ form.name }}  <!-- Renderiza o campo 'nome' -->
                 </div>
-              </div>
-              <div id="name"></div>
-              <script>startApp();</script>
-              
+            
+                <!-- E-mail -->
+                <div class="form-item-container">
+                    <p class="input-title">E-mail</p>
+                    {{ form.email }}  <!-- Renderiza o campo 'email' -->
+                </div>
+            
+                <!-- Telefone -->
+                <div class="form-item-container">
+                    <p class="input-title">Telefone</p>
+                    {{ form.phone }}  <!-- Renderiza o campo 'telefone' -->
+                </div>
+            
+                <!-- Senha -->
+                <div class="form-item-container">
+                    <p class="input-title">Senha</p>
+                    {{ form.password }}  <!-- Renderiza o campo 'password' -->
+                </div>
+            
+                <!-- Confirmar Senha -->
+                <div class="form-item-container">
+                    <p class="input-title">Confirmar Senha</p>
+                    {{ form.confirm_password }}  <!-- Renderiza o campo 'confirm_password' -->
+                </div>
+            
+                <div class="signup-btn-container">
+                    <button class="btn signup-btn" type="submit">Criar conta</button>
+                </div>
+            </form>
+            
+              <hr class="divider"> 
+              <form action="{% provider_login_url 'google' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-google">
+                  <img src="{% static 'imgs/google-icon.svg' %}" alt="google-icon" class="google-icon">
+                  <span class="google-text">Ou entre com o Google</span> 
+                </button>
+                
+            </form>
               <div class="login-container">
               <span class="login-text">Já tenho uma conta, <a href="{% url 'login'%}" class="login-link">Login</a></span>
             </div>
