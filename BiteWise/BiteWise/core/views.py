@@ -1,23 +1,21 @@
+import json
+from django.http import JsonResponse
+from django.utils.timezone import now
 from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect
+from core.utils.formatacao import formatar_quantidade
+from core.backends.calculation import calcular_dificuldade
 from core.utils.traducao import traduzir_ingredientes_para_busca, traduzir_ingredientes_para_exibicao, traduzir_unidades
 from core.services.receitas_api import buscar_detalhes_receita, buscar_receita_por_ingredientes
-from .models import Ingrediente 
-from django.contrib.auth.views import LoginView
+from .models import Ingrediente, IngredienteReceita, Receita 
 from django.views.decorators.cache import never_cache
-from django.utils.decorators import method_decorator
 from .backends.translator import traduzir_texto_azure
 from .forms import UserRegistrationForm
 from django.contrib.auth import authenticate, login as auth_login
-from .models import CustomUser
-import requests
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import get_user_model
+from django.core.mail import send_mail
 
 
-
-
-# Create your views here.
 def signup (request):
     return render(request, 'signup.html')
 
@@ -33,12 +31,10 @@ def contact (request):
 
 @login_required
 def profile(request):
-    user = request.user  # Obter o usuário logado
+    user = request.user  
     
     context = {
         'user': user,
-        # Não há necessidade de buscar um modelo separado para o Google.
-        # Agora os dados do Google estão diretamente no modelo CustomUser.
         'google_profile': {
             'google_id': user.google_id,
             'profile_picture': user.profile_picture
@@ -56,22 +52,19 @@ def detalhes_ingrediente (request, nome):
 
 @never_cache
 def user_login(request):
-    # Verifica se o usuário já está autenticado
     if request.user.is_authenticated:
-        return redirect('home')  # Redireciona para a home se o usuário já estiver logado
+        return redirect('home') 
 
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
-
-        # Autentica o usuário
         user = authenticate(request, username=username, password=password)
 
         if user is not None:
-            auth_login(request, user)  # Realiza o login
-            return redirect('home')  # Redireciona para a home após login bem-sucedido
+            auth_login(request, user) 
+            return redirect('home')  
         else:
-            messages.error(request, "Usuário ou senha inválidos.")  # Exibe erro caso o login falhe
+            messages.error(request, "Usuário ou senha inválidos.")  
 
     return render(request, 'login.html')
 
@@ -89,90 +82,209 @@ def obter_detalhes_traduzidos(receita_id):
         instrucoes_traduzidas = receita_detalhes.get('instructions', 'Sem instruções disponíveis.')
     return nome_traduzido, instrucoes_traduzidas, receita_detalhes.get('extendedIngredients', []), receita_detalhes.get('image', '')
 
+
+
+def traduzir_texto_longo(texto, de='auto', para='pt'):
+    """Divide um texto longo em partes para tradução e concatena os resultados."""
+    partes = [texto[i:i+5000] for i in range(0, len(texto), 5000)]  
+    texto_traduzido = ''
+    for parte in partes:
+        texto_traduzido += traduzir_texto_azure(parte, de, para) + ' '
+    return texto_traduzido.strip()
+
+def salvar_receita_no_banco(
+    detalhes_receita, 
+    nome_traduzido, 
+    instrucoes_traduzidas, 
+    dicas_traduzidas, 
+    ingredientes_com_quantidade
+):
+    """
+    Salva os detalhes de uma receita no banco de dados.
+    Se a receita já existir, apenas atualiza os campos modificados.
+    """
+    receita, criada = Receita.objects.get_or_create(
+        id_receita=detalhes_receita['id'], 
+        defaults={
+            'titulo': detalhes_receita.get('title', 'Receita Sem Título'),
+            'titulo_traduzido': nome_traduzido,
+            'imagem': detalhes_receita.get('image', ''),
+            'tempo_preparo': detalhes_receita.get('preparationMinutes'),
+            'tempo_total': detalhes_receita.get('readyInMinutes'),
+            'porcoes': detalhes_receita.get('servings'),
+            'dicas': detalhes_receita.get('summary', 'Dicas não disponíveis.'),
+            'dicas_traduzidas': dicas_traduzidas,
+            'instrucoes': detalhes_receita.get('instructions', 'Instruções não disponíveis.'),
+            'instrucoes_traduzidas': instrucoes_traduzidas,
+        }
+    )
+
+    if not criada:
+        receita.titulo_traduzido = nome_traduzido
+        receita.dicas_traduzidas = dicas_traduzidas
+        receita.instrucoes_traduzidas = instrucoes_traduzidas
+        receita.ultima_atualizacao = now()
+        receita.save()
+
+    ingredientes_existentes = set(
+        IngredienteReceita.objects.filter(receita=receita).values_list('nome', flat=True)
+    )
+
+    for ingrediente_original in detalhes_receita.get('extendedIngredients', []):
+        nome_ingrediente = ingrediente_original.get('name', '')
+
+        if nome_ingrediente not in ingredientes_existentes:
+            IngredienteReceita.objects.create(
+                receita=receita,
+                nome=nome_ingrediente,
+                nome_traduzido=ingredientes_com_quantidade.get(nome_ingrediente, nome_ingrediente),
+                quantidade=ingrediente_original.get('amount', 0),
+                unidade=ingrediente_original.get('unit', ''),
+                unidade_traduzida=ingredientes_com_quantidade.get(
+                    ingrediente_original.get('unit', ''), 
+                    ingrediente_original.get('unit', '')
+                ),
+            )   
+
 def buscar_receita(request):
-    # Extrai os ingredientes do request, dividindo por vírgulas e espaços
+    """Busca receitas por ingredientes fornecidos pelo usuário, traduz e salva os detalhes no banco."""
     ingredientes = request.GET.get('ingredientes')
     if not ingredientes:
         return exibir_erro(request, 'Nenhum ingrediente fornecido.')
 
-    # Divide os ingredientes em uma lista de palavras, separando por vírgula
     ingredientes_lista = [ingrediente.strip() for ingrediente in ingredientes.split(',') if ingrediente.strip()]
 
-    # Traduza os ingredientes para inglês para a busca
-    ingredientes_em_ingles = traduzir_ingredientes_para_busca(ingredientes_lista, {})
-    print(f"Ingredientes traduzidos para inglês para busca: {ingredientes_em_ingles}")
-
-    if not ingredientes_em_ingles:
+    try:
+        ingredientes_em_ingles = traduzir_ingredientes_para_busca(ingredientes_lista, {})
+    except Exception as e:
+        print(f"Erro ao traduzir os ingredientes: {e}")
         return exibir_erro(request, 'Erro ao traduzir os ingredientes fornecidos para a busca.')
 
-    # Busca a receita por ingredientes
+    if not ingredientes_em_ingles:
+        return exibir_erro(request, 'Erro ao processar os ingredientes fornecidos.')
+
     receita = buscar_receita_por_ingredientes(ingredientes_em_ingles)
     if not receita:
         return exibir_erro(request, 'Nenhuma receita encontrada com os ingredientes fornecidos.')
 
     try:
-        nome_traduzido, instrucoes_traduzidas, ingredientes_lista, imagem = obter_detalhes_traduzidos(receita['id'])
-        
-        # Certifique-se de que ingredientes_lista seja uma lista de dicionários com 'name', 'amount' e 'unit'
-        ingredientes_com_quantidade = []
-        dicionario_unidades = {}  # Cache para as unidades
+        detalhes_receita = buscar_detalhes_receita(receita['id'])
+        instrucoes = detalhes_receita.get('instructions', 'Instruções não disponíveis.')
+        dicas = detalhes_receita.get('summary', 'Dicas não disponíveis.')
+        instrucoes_traduzidas = traduzir_texto_longo(instrucoes, de='en', para='pt')
+        dicas_traduzidas = traduzir_texto_longo(dicas, de='en', para='pt')
 
-        for ingrediente_original in receita['ingredientes']:
+        tempo_preparo = detalhes_receita.get('preparationMinutes', 'Indisponível')
+        tempo_total = detalhes_receita.get('readyInMinutes', 'Indisponível')
+        porcoes = detalhes_receita.get('servings', 'Indisponível')
+        imagem = detalhes_receita.get('image', '')
+
+        ingredientes_com_quantidade = {}
+        for ingrediente_original in detalhes_receita.get('extendedIngredients', []):
             nome_ingrediente = ingrediente_original.get('name', '')
             quantidade = ingrediente_original.get('amount', 0)
             unidade = ingrediente_original.get('unit', '')
 
-            # Traduz o nome do ingrediente para português
+            quantidade_formatada = formatar_quantidade(quantidade)
+
             nome_ingrediente_traduzido = traduzir_ingredientes_para_exibicao([nome_ingrediente], {})[0]
+            unidade_traduzida = traduzir_unidades([unidade], {})[0]
 
-            # Traduz a unidade de medida, se houver
-            unidades_traduzidas = traduzir_unidades([unidade], dicionario_unidades)
+            ingredientes_com_quantidade[nome_ingrediente] = {
+                'nome_traduzido': nome_ingrediente_traduzido,
+                'quantidade': quantidade_formatada,
+                'unidade': unidade,
+                'unidade_traduzida': unidade_traduzida
+            }
+    
+        salvar_receita_no_banco(
+            detalhes_receita,
+            nome_traduzido=detalhes_receita.get('title', 'Receita Sem Título'),
+            instrucoes_traduzidas=instrucoes_traduzidas,
+            dicas_traduzidas=dicas_traduzidas,
+            ingredientes_com_quantidade=ingredientes_com_quantidade
+        )
 
-            # Corrigir a quantidade para remover casas decimais desnecessárias
-            if quantidade.is_integer():
-                quantidade_formatada = str(int(quantidade))  # Se for inteiro, mostra sem casas decimais
-            else:
-                quantidade_formatada = str(quantidade)  # Caso contrário, mantém o número com casas decimais
-
-            # Formatar o ingrediente com quantidade, unidade e nome traduzido
-            ingrediente_completo = f"{quantidade_formatada} {unidades_traduzidas[0]} de {nome_ingrediente_traduzido}".strip()
-            ingredientes_com_quantidade.append(ingrediente_completo)
+        ingredientes_formatados = [
+            f"{dados['quantidade']} {dados['unidade_traduzida']} de {dados['nome_traduzido']}".strip()
+            for dados in ingredientes_com_quantidade.values()
+        ]
 
     except Exception as e:
         print(f"Erro ao obter detalhes da receita: {e}")
         return exibir_erro(request, 'Erro ao buscar a receita. Tente novamente mais tarde.')
 
     context = {
-        'nome': nome_traduzido,
+        'nome': detalhes_receita.get('title', 'Receita Sem Título'),
         'imagem': imagem,
-        'ingredientes': ingredientes_com_quantidade,  # Ingredientes formatados com quantidade e unidade
+        'ingredientes': ingredientes_formatados,
         'instrucoes': instrucoes_traduzidas,
+        'tempo_preparo': tempo_preparo,
+        'tempo_total': tempo_total,
+        'porcoes': porcoes,
+        'dificuldade': calcular_dificuldade(tempo_total),
+        'dicas': dicas_traduzidas,
+        'armazenamento': 'Armazene em local fresco por até 3 dias.',  
     }
-    return render(request, 'resultado_receita.html', context)
+    return render(request, 'recipe_search.html', context)
+
+
+
 
 def register(request):
-    # Verifica se o usuário já está autenticado
     if request.user.is_authenticated:
-        return redirect('home')  # Redireciona para a home (ou outra página desejada) se o usuário já estiver logado
+        return redirect('home')  
 
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
-            # Criação do usuário
             user = form.save(commit=False)
-            user.set_password(form.cleaned_data['password'])  # Hash da senha
-            user.save()  # Salva no banco de dados
+            user.set_password(form.cleaned_data['password']) 
+            user.save()  
             messages.success(request, 'Usuário cadastrado com sucesso!')
-            return redirect('login')  # Redireciona para a página de login ou outra
+            return redirect('login')  
         else:
-            # Verifica os erros do formulário
             for field, errors in form.errors.items():
-                print(f"Erro no campo {field}: {errors}")  # Imprime os erros
+                print(f"Erro no campo {field}: {errors}")  
             messages.error(request, 'Erro ao cadastrar usuário. Verifique os dados.')
-            # Não redireciona, apenas re-renderiza a página com os erros
     else:
-        # Se for uma requisição GET, cria um formulário vazio
         form = UserRegistrationForm()
 
     return render(request, 'signup.html', {'form': form})
 
+
+def api_send_email(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            opcao = data.get('options')
+            mensagem = data.get('message')
+            nome = data.get('name')
+            email = data.get('email')  
+            telefone = data.get('phone')
+
+            assunto = f"Novo Contato de {nome} - {opcao}"
+
+            mensagem_email = (
+                f"Nome: {nome}\n"
+                f"E-mail: {email}\n"
+                f"Telefone: {telefone}\n\n"
+                f"Mensagem:\n{mensagem}"
+            )
+
+            destinatario = 'bitewise.contato@gmail.com'
+
+            send_mail(
+                assunto,  
+                mensagem_email,  
+                email,  
+                [destinatario],  
+                fail_silently=False,  
+            )
+
+            return JsonResponse({'message': 'E-mail enviado com sucesso!'}, status=200)
+
+        except Exception as e:
+            return JsonResponse({'message': f'Erro ao enviar o e-mail: {e}'}, status=500)
+
+    return JsonResponse({'message': 'Método não permitido'}, status=405)
