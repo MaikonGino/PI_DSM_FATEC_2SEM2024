@@ -13,7 +13,6 @@ def traduzir_texto_azure(texto, de='pt', para='en'):
         'Ocp-Apim-Subscription-Region': 'brazilsouth'
     }
 
-    # Corpo da requisição para tradução
     body = [{'text': texto}]
     
     
@@ -22,16 +21,12 @@ def traduzir_texto_azure(texto, de='pt', para='en'):
         response.raise_for_status()
         
         resultados = response.json()
-        print(f"Resposta da API para '{texto}': {resultados}")  # Debug para ver a resposta completa
         
         traduzido = resultados[0]['translations'][0]['text']
         
-        # Verifique se o texto traduzido é igual ao original
         if traduzido.lower() == texto.lower():
-            print(f"A tradução para '{texto}' não foi alterada. Usando o original.")
-            return texto  # Retorna o original se não houver tradução útil
+            return texto  
         else:
             return traduzido
     except requests.exceptions.RequestException as e:
-        print(f"Erro ao traduzir texto '{texto}': {e}")
         return None
