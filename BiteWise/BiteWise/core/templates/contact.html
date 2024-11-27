@@ -69,54 +69,49 @@
         </div>
 
         <div class="form-container">
-          <div class="radio-container">
-            <div class="option-container">
-            
-              <input type="radio" id="option1" name="options" value="Duvidas" class="radio">
-              <label for="option1" class="radio-text">Dúvidas</label>
+          <form id="contact-form">
+            <div class="radio-container">
+                <div class="option-container">
+                    <input type="radio" id="option1" name="options" value="Duvidas" class="radio">
+                    <label for="option1" class="radio-text">Dúvidas</label>
+                </div>
+                <div class="option-container">
+                    <input type="radio" id="option2" name="options" value="Elogio" class="radio">
+                    <label for="option2" class="radio-text">Elogio</label>
+                </div>
+                <div class="option-container">
+                    <input type="radio" id="option3" name="options" value="Reclamacao" class="radio">
+                    <label for="option3" class="radio-text">Reclamação</label>
+                </div>
             </div>
-
-            <div class="option-container">
-            
-              <input type="radio" id="option2" name="options" value="Elogio" class="radio">
-              <label for="option2" class="radio-text">Elogio</label>
+            <div class="message-container">
+                <span>Mensagem:</span>
+                <textarea name="message" id="message-text"></textarea>
             </div>
-
-            <div class="option-container">
-              <input type="radio" id="option3" name="options" value="Reclamacao" class="radio">
-              <label for="option3">Reclamação</label>
+            <div class="text-input-container">
+                <span>Nome Completo</span>
+                <input type="text" name="name" id="name" class="text-input">
             </div>
-          </div>
-
-          <div class="message-container">
-            <span>Mensagem:</span>
-            <textarea name="message" id="message-text"></textarea>
-          </div>
-
-          <div class="text-input-container">
-            <span>Nome Completo</span>
-            <input type="text" class="text-input">
-          </div>
-
-          <div class="text-input-container">
-            <span>E-mail</span>
-            <input type="text" class="text-input">
-          </div>
-
-          <div class="bottom-form-container">
-            <div class="text-input-container phone">
-              <span>Telefone</span>
-              <input type="text" class="text-input">
+            <div class="text-input-container">
+                <span>E-mail</span>
+                <input type="email" name="email" id="email" class="text-input">
             </div>
-
-            <button class="send-btn">Enviar</button>
-          </div>
-        </div>
+            <div class="bottom-form-container">
+                <div class="text-input-container phone">
+                    <span>Telefone</span>
+                    <input type="text" name="phone" id="phone" class="text-input">
+                </div>
+                <button type="submit" class="send-btn">Enviar</button>
+            </div>
+        </form>
+           
+      </div>
 
         <div class="privacy-policy">
           <p>Para realizarmos o atendimento via FALE CONOSCO precisaremos fazer a coleta e o tratamento dos seus dados pessoais. Por isso, antes de submeter a sua mensagem certifique-se que você está de acordo com a <span>Política de Privacidade</span> o BiteWise.
           </p>
         </div>
+        <div id="response-message"></div>     
     </main>
 
 
@@ -125,7 +120,7 @@
           <div class="footer-text-wrapper">
             <span class="footer-text">© 2024 BiteWise. Todos os direitos reservados.</span>
             <span class="footer-text">Tel: (19) 99999-9999 </span>
-            <span class="footer-text">bitewise.contato@email.com</span>
+            <span class="footer-text">bitewise.contato@gmail.com</span>
           </div>
           <div class="footer-icons-container">
             <a href="#"><img src="{% static 'imgs/facebook.svg' %}" alt="faceboo" class="facebook"></a>
@@ -137,5 +132,6 @@
 
       <script src="{% static 'js/dropdown.js' %}"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+      <script src="{% static 'js/sendMail.js' %}"></script>
 </body>
 </html>

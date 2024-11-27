@@ -11,6 +11,7 @@ urlpatterns = [
     path('ingrediente/<str:nome>/', views.detalhes_ingrediente, name='detalhes_ingrediente'),
     path('Perfil', views.profile, name='perfil'),
     path('buscar_receita/', views.buscar_receita, name='buscar_receita'),
+    path('api/send-email/', views.api_send_email, name='api_send_email'),
     # auth urls
     path('login/', views.user_login, name='login'),
     path('cadastro/', views.register, name='register'),
