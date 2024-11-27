@@ -243,7 +243,10 @@
 
       <section class="ingredients-section-wrapper">
         <div class="ingredients-options-container">
+          <div class="ingredients-slider">
+          <div class="option margin-bottom">
           <a href="#"><img src="{% static 'imgs/BiteWise-option.svg' %}" alt=""></a>
+          </div>
           <div class="option">
             <a href="{% url 'detalhes_ingrediente' 'Frango' %}"><img src="{% static 'imgs/chicken-option.svg' %}" alt=""></a>
             <a href="{% url 'detalhes_ingrediente' 'Frango' %}" class="option-name">frango</a>
@@ -260,7 +263,7 @@
             <a href="{% url 'detalhes_ingrediente' 'Salmao' %}"><img src="{% static 'imgs/salmon-option.svg' %}" alt=""></a>
             <a href="{% url 'detalhes_ingrediente' 'Salmao' %}" class="option-name">Salmão</a>
           </div>
-          <div class="option margin-top">
+          <div class="option">
             <a href="{% url 'detalhes_ingrediente' 'Carne Moida' %}"><img src="{% static 'imgs/mincedMeat-option.svg' %}" alt=""></a>
             <a href="{% url 'detalhes_ingrediente' 'Carne Moida' %}" class="option-name ">Carne Moida</a>
           </div>
@@ -272,13 +275,12 @@
             <a href="{% url 'detalhes_ingrediente' 'Batata Doce' %}"><img src="{% static 'imgs/sweetPotato-option.svg' %}" alt=""></a>
             <a href="{% url 'detalhes_ingrediente' 'Batata Doce' %}" class="option-name">Batata Doce</a>
           </div>
-          <div class="option margin-top">
+          <div class="option">
             <a href="#"><img src="{% static 'imgs/more-options.svg' %}" alt=""></a>
             <a href="#" class="option-name "> Mais opções</a>
           </div>
         </div>
-
-        
+      </div>
       </section>
       
     </main>
@@ -290,7 +292,7 @@
         <div class="footer-text-wrapper">
           <span class="footer-text">© 2024 BiteWise. Todos os direitos reservados.</span>
           <span class="footer-text">Tel: (19) 99999-9999 </span>
-          <span class="footer-text">bitewise.contato@email.com</span>
+          <span class="footer-text">bitewise.contato@gmail.com</span>
         </div>
         <div class="footer-icons-container">
           <a href="#"><img src="{% static 'imgs/facebook.svg' %}" alt="faceboo" class="facebook"></a>
@@ -302,6 +304,7 @@
 
     <script src="{% static 'js/dropdown.js' %}"></script>
     <script src="{% static 'js/prices.js' %}"></script>
+    <script src="{% static 'js/slider.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

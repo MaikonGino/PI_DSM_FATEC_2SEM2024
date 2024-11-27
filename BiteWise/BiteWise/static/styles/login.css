@@ -325,6 +325,7 @@ main {
     .footer-container {
         flex-direction: column;
         height: 230px;
+        margin-top: 40%;
     }
 
     .footer-text-wrapper {

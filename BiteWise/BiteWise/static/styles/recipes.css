@@ -127,6 +127,13 @@ body {
     width: 190px;
 }
 
+.dropdown-item {
+    color: #000000;
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 1em;
+}
+
 .profile-btn {
     font-family: 'Poppins';
     color: #000000;

@@ -41,6 +41,7 @@ body {
 
 .nav-btn { 
     background-color: #F39C12;
+    margin-right: 10px;
 }
 
 .nav-btn:hover {
@@ -84,6 +85,13 @@ body {
     display: flex;
     gap: 10px;
     margin-right: 5px;
+}
+
+.dropdown-item {
+    color: #000000;
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 1em;
 }
 
 .arrow-img {
@@ -154,6 +162,7 @@ main {
     font-family: 'Poppins';
     font-weight: 600;
     font-size: 50px;
+    margin-left: 10px;
 }
 
 .first-part {
@@ -220,7 +229,7 @@ main {
 .compromises {
     display: flex;
     flex-direction: row;
-    gap: 200px;
+    gap: 150px;
     justify-content: center;
     align-items: center;
     margin-top: 70px;
@@ -229,6 +238,22 @@ main {
 
 .compromises img {
     height: 150px;
+}
+
+.compromises-start {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+}
+
+.compromises-end {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
 }
 
 /* footer */
@@ -284,14 +309,82 @@ main {
 
 @media (min-width: 200px) and (max-width: 1200px) {
 
+    .main-title {
+        text-align: center;
+    }
+
     .first-part {
         display: flex;
         flex-direction: column;
+        width: 100%;
+        height: auto;
+    }
+
+    .first-part img {
+        width: 100%;
+        height: auto;
+    }
+
+    .first-part p {
+        width: 100%;
+        height: auto;
     }
 
     .second-part {
         display: flex;
         flex-direction: column-reverse;
+        width: 100%;
+        height: auto;
+    }
+
+    .second-part img {
+        width: 100%;
+        height: auto;
+    }
+
+    .second-part p {
+        width: 100%;
+        height: auto;
+    }
+
+    .compromises {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .compromises img {
+        width: 120px;
+    }
+
+    .compromises-title-container h4 {
+        text-align: center;
+    }
+
+    .footer-icons-container {
+        gap: 10px;
+        margin-right: 0;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        height: 230px;
+    }
+
+    .footer-text-wrapper {
+        align-items: center;
+        justify-content: center;
+    }
+
+    .footer-text {
+        font-size: 18px;
+    }
+
+    .footer-icons-container {
+        gap: 40px;
+        margin-bottom: 20px;
     }
 
 }

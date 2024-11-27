@@ -69,7 +69,7 @@
         </div>
 
         <section class="first-part">
-          <img src="{% static 'imgs/kitchen-pic.svg' %}" alt="">
+          <img src="{% static 'imgs/kitchen-pic.svg' %}" alt="imagem-1" class="first-img">
           <p>O BiteWise é dedicado a ajudar os usuários a criar receitas deliciosas com facilidade, utilizando ingredientes do dia a dia. Nossa equipe acredita no poder da cozinha simples para trazer alegria a cada lar. Com paixão pela comida e pela comunidade, nos esforçamos para tornar a culinária acessível a todos.</p>
         </section>
 
@@ -83,10 +83,14 @@
         </div>
 
         <section class="compromises">
-          <img src="{% static 'imgs/SSL-secure.svg' %}" alt="">
-          <img src="{% static 'imgs/ABRAS.svg' %}" alt="">
-          <img src="{% static 'imgs/openai.svg' %}" alt="">
-          <img src="{% static 'imgs/fabrica-inovacao.svg' %}" alt="">
+          <div class="compromises-start">
+            <img src="{% static 'imgs/SSL-secure.svg' %}" alt="">
+            <img src="{% static 'imgs/ABRAS.svg' %}" alt="">
+          </div>
+          
+          <div class="compromises-end">
+            <img src="{% static 'imgs/openai.svg' %}" alt="">
+            <img src="{% static 'imgs/fabrica-inovacao.svg' %}" alt="">
           </div>
         </section>
     </main>
@@ -96,7 +100,7 @@
           <div class="footer-text-wrapper">
             <span class="footer-text">© 2024 BiteWise. Todos os direitos reservados.</span>
             <span class="footer-text">Tel: (19) 99999-9999 </span>
-            <span class="footer-text">bitewise.contato@email.com</span>
+            <span class="footer-text">bitewise.contato@gmail.com</span>
           </div>
           <div class="footer-icons-container">
             <a href="#"><img src="{% static 'imgs/facebook.svg' %}" alt="faceboo" class="facebook"></a>
