@@ -1,0 +1,445 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
+body{
+    padding: 0;
+    margin: 0;
+    background-color: #ffffff;
+}
+
+.container-fluid {
+    padding-top: 0;
+    margin: 0;
+    
+}
+
+.nav-link:hover {
+    color: #f3ac3a;
+    font-weight: 600;
+}
+
+
+.nav-font-color {
+    color: #F5F5DC;
+    font-family: "Poppins";
+}
+
+.nav-btn-font {
+    color: #000000;
+    font-family: "Poppins";
+    font-weight: 600;
+}
+
+.nav-btn { 
+    background-color: #F39C12;
+}
+
+.nav-btn:hover {
+    background-color: #f3ac3a;
+}
+
+.nav-btn:hover:active {
+    background-color: #66CDAA;
+}
+
+.navbar-bg  {
+    background-color: #C0392B;
+    
+}
+
+.nav-btn-margin {
+    margin-right: 0.732vw;
+}
+
+.nav-right-side {
+    margin-left: 1.464vw;
+    gap: 1.464vw;
+}
+
+.dropdown-container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #F39C12;
+    border-radius: 5px;
+    width: 230px;
+    height: 50px;
+    
+}
+
+.dropdown-icons-wrapper {
+    display: flex;
+    gap: 0.732vw;
+    margin-right: 5px;
+}
+
+.arrow-img {
+    z-index: 3;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #F39C12;
+    width: 190px;
+    height: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    margin-top: 150px;
+    transition: opacity 0.3s ease;
+    border-radius: 0 0 5px 5px;
+}
+
+.dropdown-content-header {
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+    gap: 5px;
+}
+
+.dropdown-content-footer {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+}
+
+.dropdown-content a {
+    color: #000000;
+    text-decoration: none;
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 16px;
+    width: 130px;
+}
+
+.dropdown-item {
+    color: #000000;
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 1em;
+}
+
+.dropdown-content hr {
+    width: 190px;
+}
+
+.profile-btn {
+    font-family: 'Poppins';
+    color: #000000;
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 8px;
+}   
+
+.main-content-top {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    padding-left: 40px;
+}
+
+
+
+.top-text {
+    font-family: 'Poppins';
+    color: #000000;
+    width: 600px;
+    margin-left: 20px;
+}
+
+.recipe-title {
+    font-size: 36px;
+    font-weight: 600;
+}
+
+.informations-title {
+    font-size: 30px;
+    margin-top: 20px;
+}
+
+.informations-list {
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+
+.section-wrapper {
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    width: 100%;
+}
+
+.section-2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+    padding-left: 40px;
+    padding-right: 40px;
+    margin-top: 40px;
+}
+
+
+
+
+.ingredients-container {
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+}
+
+.ingredients-title {
+    color: #000000;
+    font-weight: 700;
+    font-size: 40px;
+}
+
+.ingredients-content {
+    color: #000000;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+
+.tips-container {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #B1B4B5;
+    border-radius: 10px;
+    height: auto;
+    width: 400px;
+    font-family: 'Poppins';
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tips-title {
+    color: #117A65;
+    font-weight: 500;
+}
+
+.tips-content {
+    color: #000000;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+
+.section-3 {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+}
+
+.instructions-container {
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+}
+
+.instructions-title {
+    color: #000000;
+    font-weight: 700;
+    font-size: 40px;
+}
+
+.instructions-content {
+    color: #000000;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.storage-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.storage-container {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #B1B4B5;
+    border-radius: 10px;
+    height: auto;
+    width: 400px;
+    font-family: 'Poppins';
+    padding: 10px;
+    margin-top: 40px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.storage-title {
+    color: #117A65;
+    font-weight: 500;
+}
+
+.storage-content {
+    color: #000000;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.bitewise-logo {
+    height: 150px;
+    width: 150px;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: row;
+    height: 120px;
+    margin-top: 70px;
+    background-color: #000000;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px 10px 0 0;
+}
+
+.footer-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.footer-text {
+    margin-left: 20px;
+    font-family: 'Roboto';
+    color: #FFFFFF;
+    font-weight: 500;
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+.footer-icons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 60px;
+    gap: 130px;
+}
+
+
+
+.facebook {
+    height: 55px;
+}
+
+.instagram {
+    height: 55px;
+}
+
+.tiktok {
+    height: 55px;
+}
+
+@media (min-width: 200px) and (max-width: 1200px) {
+
+    main {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .main-content-top {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .main-content-top img {
+        width: 90%;
+    }
+
+    .top-text {
+        width: 90%;
+        margin-left: 0;
+    }
+
+    .section-wrapper {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .section-2 {
+        padding-left: 0;
+        padding-right: 0;
+        width: 100%;
+    }
+
+    .section-2 ul {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .section-2 ul li {
+        height: auto;
+        width: 100%;
+    }
+
+    .ingredients-container {
+        width: 100%;
+    }
+
+    .instructions-container {
+        width: 100%;
+        height: auto;
+        margin-top: 20px;
+    }
+
+    .section-3 {
+        margin-top: 20px;
+    }
+
+    .tips-container {
+        width: 100%;
+    }
+
+
+    .storage-wrapper {
+        width: 100%;
+    }
+
+    .storage-container {
+        width: 100%;
+    }
+
+    .footer-icons-container {
+        gap: 10px;
+        margin-right: 0;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        height: 230px;
+    }
+
+    .footer-text-wrapper {
+        align-items: center;
+        justify-content: center;
+    }
+
+    .footer-text {
+        font-size: 18px;
+    }
+
+    .footer-icons-container {
+        gap: 40px;
+        margin-bottom: 20px;
+    }
+
+}
