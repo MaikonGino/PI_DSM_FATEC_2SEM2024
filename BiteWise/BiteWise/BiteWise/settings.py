@@ -142,7 +142,7 @@ LOGOUT_REDIRECT_URL = 'home'
 LOGIN_REDIRECT_URL = 'home'
 
 AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',  # Mantém o backend padrão
+    'django.contrib.auth.backends.ModelBackend',  
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
@@ -153,8 +153,8 @@ DATABASES = {
         'NAME': 'bitewise',
         'USER': 'root',
         'PASSWORD': 'admin',
-        'HOST': 'localhost',  # ou o endereço do seu servidor de banco de dados
-        'PORT': '3306',       # Porta padrão do MySQL
+        'HOST': 'localhost',  
+        'PORT': '3306',       
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
             'ssl': {'ssl-ca': ''}
@@ -164,13 +164,13 @@ DATABASES = {
 
 
 
-LOGIN_REDIRECT_URL = 'home'  # Ajuste conforme necessário
-LOGOUT_REDIRECT_URL = 'home'  # Ajuste conforme necessário
-ACCOUNT_AUTHENTICATION_METHOD = 'email'  # ou 'email'
+LOGIN_REDIRECT_URL = 'home'  
+LOGOUT_REDIRECT_URL = 'home' 
+ACCOUNT_AUTHENTICATION_METHOD = 'email'  
 ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = True
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
-ACCOUNT_USERNAME_REQUIRED = False  # Desabilita a exigência de 'username'
+ACCOUNT_USERNAME_REQUIRED = False  
 SOCIALACCOUNT_AUTO_SIGNUP = True
 
 load_dotenv()
@@ -195,3 +195,10 @@ SOCIALACCOUNT_PROVIDERS = {
 AUTH_USER_MODEL = 'core.CustomUser'
 
 ACCOUNT_ADAPTER = 'core.adapters.CustomAccountAdapter'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'bitewise.contato@gmail.com'
+EMAIL_HOST_PASSWORD = 'umwm dovm lakk raqi'
