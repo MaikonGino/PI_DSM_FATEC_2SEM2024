@@ -1,20 +1,13 @@
-/* font imports */
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 
-/* html reset */
-
-body {
+body{
     padding: 0;
     margin: 0;
     background-color: #ffffff;
 }
-
-
-/* header */ 
 
 .container-fluid {
     padding-top: 0;
@@ -41,13 +34,11 @@ body {
 
 .nav-btn { 
     background-color: #F39C12;
-    margin-right: 10px;
 }
 
 .nav-btn:hover {
     background-color: #f3ac3a;
 }
-
 
 .nav-btn:hover:active {
     background-color: #66CDAA;
@@ -59,12 +50,12 @@ body {
 }
 
 .nav-btn-margin {
-    margin-right: 10px;
+    margin-right: 0.732vw;
 }
 
 .nav-right-side {
-    margin-left: 20px;
-    gap: 20px;
+    margin-left: 1.464vw;
+    gap: 1.464vw;
 }
 
 .dropdown-container {
@@ -80,18 +71,10 @@ body {
     
 }
 
-
 .dropdown-icons-wrapper {
     display: flex;
-    gap: 10px;
+    gap: 0.732vw;
     margin-right: 5px;
-}
-
-.dropdown-item {
-    color: #000000;
-    font-family: 'Poppins';
-    font-weight: 600;
-    font-size: 1em;
 }
 
 .arrow-img {
@@ -133,6 +116,13 @@ body {
     width: 130px;
 }
 
+.dropdown-item {
+    color: #000000;
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 1em;
+}
+
 .dropdown-content hr {
     width: 190px;
 }
@@ -145,124 +135,170 @@ body {
     margin-left: 8px;
 }   
 
-/* main content */
-
-main {
-    padding: 20px;
+.main-content-top {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    padding-left: 40px;
 }
 
-/* first section */
 
-.main-title-container {
+
+.top-text {
+    font-family: 'Poppins';
+    color: #000000;
+    width: 600px;
+    margin-left: 20px;
+}
+
+.recipe-title {
+    font-size: 36px;
+    font-weight: 600;
+}
+
+.informations-title {
+    font-size: 30px;
+    margin-top: 20px;
+}
+
+.informations-list {
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+
+.section-wrapper {
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    width: 100%;
+}
+
+.section-2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+    padding-left: 40px;
+    padding-right: 40px;
     margin-top: 40px;
 }
 
-.main-title {
+
+
+
+.ingredients-container {
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+}
+
+.ingredients-title {
     color: #000000;
-    font-family: 'Poppins';
-    font-weight: 600;
-    font-size: 50px;
-    margin-left: 10px;
+    font-weight: 700;
+    font-size: 40px;
 }
 
-.first-part {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    margin-top: 50px;
-    gap: 10px;
-}
-
-.first-part img {
-    height: 630px;
-    width: 850px;
-}
-
-.first-part p {
-    width: 450px;
-    height: 400px;
-    text-align: left;
-    font-family: 'Poppins';
-    font-size: 20px;
-    line-height: 1.5em;
-    
-}
-
-/* second section */
-
-.second-part {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    margin-top: 100px;
-    gap: 10px;
-}
-
-.second-part img {
-    height: 600px;
-    width: 850px;
-}
-
-.second-part p {
-    width: 450px;
-    height: 400px;
-    text-align: left;
-    font-family: 'Poppins';
-    font-size: 20px;
-    line-height: 1.5em;
-}
-
-/* compromises section */
-
-.compromises-title-container {
-    margin-top: 90px;
-}
-
-.compromises-title-container h4 {
+.ingredients-content {
     color: #000000;
-    font-family: 'Poppins';
-    font-weight: 600;
+    font-size: 20px;
+    margin-top: 10px;
 }
 
-.compromises {
+
+.tips-container {
     display: flex;
-    flex-direction: row;
-    gap: 150px;
+    flex-direction: column;
+    border: 1px solid #B1B4B5;
+    border-radius: 10px;
+    height: auto;
+    width: 400px;
+    font-family: 'Poppins';
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tips-title {
+    color: #117A65;
+    font-weight: 500;
+}
+
+.tips-content {
+    color: #000000;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+
+.section-3 {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+}
+
+.instructions-container {
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+}
+
+.instructions-title {
+    color: #000000;
+    font-weight: 700;
+    font-size: 40px;
+}
+
+.instructions-content {
+    color: #000000;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.storage-wrapper {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 70px;
-    
+    gap: 20px;
 }
 
-.compromises img {
+.storage-container {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #B1B4B5;
+    border-radius: 10px;
+    height: auto;
+    width: 400px;
+    font-family: 'Poppins';
+    padding: 10px;
+    margin-top: 40px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.storage-title {
+    color: #117A65;
+    font-weight: 500;
+}
+
+.storage-content {
+    color: #000000;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.bitewise-logo {
     height: 150px;
+    width: 150px;
 }
-
-.compromises-start {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 100px;
-}
-
-.compromises-end {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 100px;
-}
-
-/* footer */
 
 .footer-container {
     display: flex;
     flex-direction: row;
     height: 120px;
-    margin-top: 50px;
+    margin-top: 70px;
     background-color: #000000;
     justify-content: space-between;
     align-items: center;
@@ -306,61 +342,80 @@ main {
     height: 55px;
 }
 
-
 @media (min-width: 200px) and (max-width: 1200px) {
 
-    .main-title {
-        text-align: center;
+    main {
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
-    .first-part {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        height: auto;
-    }
-
-    .first-part img {
-        width: 100%;
-        height: auto;
-    }
-
-    .first-part p {
-        width: 100%;
-        height: auto;
-    }
-
-    .second-part {
+    .main-content-top {
         display: flex;
         flex-direction: column-reverse;
-        width: 100%;
-        height: auto;
-    }
-
-    .second-part img {
-        width: 100%;
-        height: auto;
-    }
-
-    .second-part p {
-        width: 100%;
-        height: auto;
-    }
-
-    .compromises {
-        display: flex;
-        justify-content: center;
         align-items: center;
+        justify-content: center;
+        gap: 20px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .main-content-top img {
+        width: 90%;
+    }
+
+    .top-text {
+        width: 90%;
+        margin-left: 0;
+    }
+
+    .section-wrapper {
+        display: flex;
+        width: 100%;
         flex-direction: column;
+    }
+
+    .section-2 {
+        padding-left: 0;
+        padding-right: 0;
         width: 100%;
     }
 
-    .compromises img {
-        width: 120px;
+    .section-2 ul {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
     }
 
-    .compromises-title-container h4 {
-        text-align: center;
+    .section-2 ul li {
+        height: auto;
+        width: 100%;
+    }
+
+    .ingredients-container {
+        width: 100%;
+    }
+
+    .instructions-container {
+        width: 100%;
+        height: auto;
+        margin-top: 20px;
+    }
+
+    .section-3 {
+        margin-top: 20px;
+    }
+
+    .tips-container {
+        width: 100%;
+    }
+
+
+    .storage-wrapper {
+        width: 100%;
+    }
+
+    .storage-container {
+        width: 100%;
     }
 
     .footer-icons-container {

@@ -195,6 +195,40 @@ main {
     margin-top: 15px;
 }
 
+.btn-google {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    width: 300px;
+}
+
+.btn-google:hover {
+    border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.google-icon {
+    height: 35px;
+    width: 90px;
+    border-right: solid 1px rgba(0, 0, 0, 0.5);
+}
+
+.google-icon:active {
+    border-right: solid 1px #000000;
+}
+
+.google-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 210px;
+    color: #000000;
+    font-family: 'Poppins';
+    font-weight: 600;
+}
+
 .login-text {
     color: #000000;
     font-family: 'Poppins';
@@ -258,4 +292,84 @@ main {
 
 .tiktok {
     height: 55px;
+}
+
+
+@media (min-width: 200px) and (max-width: 1200px) {
+
+    .form-container {
+        width: 50%;
+    }
+
+    .title-container {
+        width: 80%
+    }
+
+    .form-input-container {
+        width: 80%;
+    }
+
+    .form-item-container {
+        width: 100%;
+    }
+
+    .input {
+        width: 100%;
+    }
+
+    .footer-icons-container {
+        gap: 10px;
+        margin-right: 0;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        height: 230px;
+        margin-top: 40%;
+    }
+
+    .footer-text-wrapper {
+        align-items: center;
+        justify-content: center;
+    }
+
+    .footer-text {
+        font-size: 18px;
+    }
+
+    .footer-icons-container {
+        gap: 40px;
+        margin-bottom: 20px;
+    }
+
+}
+
+@media (min-width: 500px ) {
+    
+    .form-container {
+        width: 80%;
+    }
+}
+
+@media (max-width: 700px) {
+
+    .form-container {
+        width: 80%;
+    }
+
+    .footer-container {
+        margin-top: 130px;
+        
+    }
+}
+
+@media (min-width: 1000px) {
+    .form-container {
+        width: 50%;
+    }
+
+    .footer-container {
+        display: flex;
+        flex-direction: row;
+    }
 }

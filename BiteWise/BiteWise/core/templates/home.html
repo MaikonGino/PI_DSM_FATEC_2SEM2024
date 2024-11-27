@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <link rel="shortcut icon" type="imagex/png" href="{% static 'imgs/bitewise_icon.ico' %}">
     <!--Bootstrap5 CSS-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
     <!--Local CSS-->
@@ -55,7 +56,7 @@
             {% else %}
             <!-- Menu para usuários deslogados -->
             <a href="{% url 'login' %}" class="nav-link nav-font-color nav-btn-margin">Iniciar sessão</a>
-            <a class="btn nav-btn-font nav-btn" href="{% url 'signup' %}">Começar Gratuitamente</a>
+            <a class="btn nav-btn-font nav-btn" href="{% url 'register' %}">Começar Gratuitamente</a>
             {% endif %}
           </div>
         </div>
@@ -66,49 +67,55 @@
       <div class="search-container">
         <h1 class="main-title">A sua receita perfeita em instantes.</h1>
         <div class="input-container">
-          <div class="input-title-container">
-            <p class="input-title">Escreva aqui seus ingredientes:</p>
-          </div>
-          <input type="text" id="input-box">
-          <button class="btn search-btn">Busque sua receita</button>
+            <!-- Formulário inicia aqui e engloba todos os campos e o botão -->
+            <form action="{% url 'buscar_receita' %}" method="get" class="input-form">
+                <div class="input-title-container">
+                    <p class="input-title">Escreva aqui seus ingredientes:</p>
+                </div>
+                <!-- Campo de entrada e botão de submissão estão dentro do <form> -->
+                <input type="text" id="input-box" name="ingredientes" required>
+                <button class="btn search-btn" type="submit">Busque sua receita</button>
+            </form>
         </div>
         <img src="{% static 'imgs/arrow.svg' %}" alt="" class="arrow-decor">
         <span class="info-text">Digite os ingredientes que você tem em casa, e deixe que fazemos a mágica para você!</span>
         <img src="{% static 'imgs/Logo2.svg' %}" alt="" class="logo-img">
         <div class="second-title-container">
-          <h1>Como o BiteWise funciona?</h1>
+            <h1>Como o BiteWise funciona?</h1>
         </div>
-      </div>
+    </div>
+    
 
         <div class="tutorial-container">
           <div class="tutor-image-wrapper">
             <div class="tutor-image-container">
-              <img src="{% static 'imgs/tutor-image1.svg' %}" alt="" class="tutor-image">
+              <div class="step-img-container">
+                <img src="{% static 'imgs/tutor-image1.svg' %}" alt="" class="tutor-image">
+              </div>
+              <div class="step-text-container">
+                <h3 class="step-title">Passo 1</h3>
+                <p class="step-info">Digite seus ingredientes. Encontre receitas que combinam perfeitamente com o que você tem.</p>
+              </div>
             </div>
       
             <div class="tutor-image-container">
-              <img src="{% static 'imgs/tutor-image2.svg' %}" alt="" class="tutor-image">
+              <div class="step-img-container">
+                <img src="{% static 'imgs/tutor-image2.svg' %}" alt="" class="tutor-image">
+              </div>
+              <div class="step-text-container">
+                <h3 class="step-title">Passo 2</h3>
+                <p class="step-info">Explore receitas e escolha sua favorita. Prepare-se para cozinhar uma refeição deliciosa</p>
+              </div>
             </div>
 
             <div class="tutor-image-container">
-              <img src="{% static 'imgs/tutor-image3.svg' %}" alt="" class="tutor-image">
-            </div>
-          </div>
-
-          <div class="tutor-text-wrapper">
-            <div class="step-text-container">
-              <h3 class="step-title">Passo 1</h3>
-              <p class="step-info">Digite seus ingredientes. Encontre receitas que combinam perfeitamente com o que você tem.</p>
-            </div>
-
-            <div class="step-text-container">
-              <h3 class="step-title">Passo 2</h3>
-              <p class="step-info">Explore receitas e escolha sua favorita. Prepare-se para cozinhar uma refeição deliciosa</p>
-            </div>
-
-            <div class="step-text-container">
-              <h3 class="step-title">Passo 3</h3>
-              <p class="step-info">Siga os passos da receita. Desfrute do seu prato feito em casa, e com a orientação do BiteWise.</p>
+              <div class="step-img-container">
+                <img src="{% static 'imgs/tutor-image3.svg' %}" alt="" class="tutor-image">
+              </div>
+              <div class="step-text-container">
+                <h3 class="step-title">Passo 3</h3>
+                <p class="step-info">Siga os passos da receita. Desfrute do seu prato feito em casa, e com a orientação do BiteWise.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -236,7 +243,10 @@
 
       <section class="ingredients-section-wrapper">
         <div class="ingredients-options-container">
+          <div class="ingredients-slider">
+          <div class="option margin-bottom">
           <a href="#"><img src="{% static 'imgs/BiteWise-option.svg' %}" alt=""></a>
+          </div>
           <div class="option">
             <a href="{% url 'detalhes_ingrediente' 'Frango' %}"><img src="{% static 'imgs/chicken-option.svg' %}" alt=""></a>
             <a href="{% url 'detalhes_ingrediente' 'Frango' %}" class="option-name">frango</a>
@@ -253,7 +263,7 @@
             <a href="{% url 'detalhes_ingrediente' 'Salmao' %}"><img src="{% static 'imgs/salmon-option.svg' %}" alt=""></a>
             <a href="{% url 'detalhes_ingrediente' 'Salmao' %}" class="option-name">Salmão</a>
           </div>
-          <div class="option margin-top">
+          <div class="option">
             <a href="{% url 'detalhes_ingrediente' 'Carne Moida' %}"><img src="{% static 'imgs/mincedMeat-option.svg' %}" alt=""></a>
             <a href="{% url 'detalhes_ingrediente' 'Carne Moida' %}" class="option-name ">Carne Moida</a>
           </div>
@@ -265,13 +275,12 @@
             <a href="{% url 'detalhes_ingrediente' 'Batata Doce' %}"><img src="{% static 'imgs/sweetPotato-option.svg' %}" alt=""></a>
             <a href="{% url 'detalhes_ingrediente' 'Batata Doce' %}" class="option-name">Batata Doce</a>
           </div>
-          <div class="option margin-top">
+          <div class="option">
             <a href="#"><img src="{% static 'imgs/more-options.svg' %}" alt=""></a>
             <a href="#" class="option-name "> Mais opções</a>
           </div>
         </div>
-
-        
+      </div>
       </section>
       
     </main>
@@ -283,7 +292,7 @@
         <div class="footer-text-wrapper">
           <span class="footer-text">© 2024 BiteWise. Todos os direitos reservados.</span>
           <span class="footer-text">Tel: (19) 99999-9999 </span>
-          <span class="footer-text">bitewise.contato@email.com</span>
+          <span class="footer-text">bitewise.contato@gmail.com</span>
         </div>
         <div class="footer-icons-container">
           <a href="#"><img src="{% static 'imgs/facebook.svg' %}" alt="faceboo" class="facebook"></a>
@@ -295,5 +304,7 @@
 
     <script src="{% static 'js/dropdown.js' %}"></script>
     <script src="{% static 'js/prices.js' %}"></script>
+    <script src="{% static 'js/slider.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
